@@ -2,7 +2,7 @@ import { reactive } from 'vue'
 import { DialogModel } from '@/utils/baseType'
 
 export default function useDialog() {
-    
+
     const dialog = reactive<DialogModel>({
         title: '',
         visible: false,
@@ -18,7 +18,7 @@ export default function useDialog() {
         dialog.visible = false
     }
 
-    const onConfirm = ()=>{
+    const onConfirm = () => {
         dialog.visible = false
     }
 
