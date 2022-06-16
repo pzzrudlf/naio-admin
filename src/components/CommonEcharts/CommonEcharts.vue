@@ -19,6 +19,7 @@ const props = withDefaults(defineProps<{
     width: '100%',
     height: '360px'
 })
+
 onMounted(() => {
     const { setOptions, resize } = useEcharts(commonEchartsRef.value!)
     watchEffect(() => {

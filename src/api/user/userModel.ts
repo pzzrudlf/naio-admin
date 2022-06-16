@@ -33,19 +33,19 @@ export interface UserInfo {
 /**
  * 用户列表查询参数
  */
- export interface UserListParam{
-    deptId:string | number;
-    loginName:string;
-    currentPage:number;
-    pageSize:number;
-    total:number;
+export interface UserListParam {
+    deptId: string | number;
+    loginName: string;
+    currentPage: number;
+    pageSize: number;
+    total: number;
 }
 
 /**
  * 表单提交的参数
  */
-export interface AddUserModel{
-    type:string;//add or edit
+export interface AddUserModel {
+    type: string;//add or edit
     id: string | number;
     deptId: string | number;
     deptName: string;
@@ -58,14 +58,14 @@ export interface AddUserModel{
     sex: string;
 }
 
-export interface AssignRoleListParam{
+export interface AssignRoleListParam {
     currentPage: number;
     pageSize: number;
     userId: string | number;
     total: number;
 }
 
-export interface SelectRoleParam{
-    roleId:string | number;
-    userId:string | number;
+export interface SelectRoleParam {
+    roleId: string | number;
+    userId: string | number;
 }

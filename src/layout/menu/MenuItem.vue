@@ -11,21 +11,20 @@
         </el-sub-menu>
         <el-menu-item style="color: #f4f4f5" v-else :index="menu.path">
             <i v-if="menu.meta.icon && menu.meta.icon.includes('el-icon')" :class="menu.meta.icon"></i>
-                <!-- 动态组件的使用方法 -->
-                <!-- <component class="icons" v-else :is="menu.meta.icon" /> -->
-                <Icon class="icons" v-else :icon="menu.meta.icon" />
+            <!-- 动态组件的使用方法 -->
+            <!-- <component class="icons" v-else :is="menu.meta.icon" /> -->
+            <Icon class="icons" v-else :icon="menu.meta.icon" />
             <template #title>{{ menu.meta.title }}</template>
         </el-menu-item>
     </template>
 </template>
     
 <script setup lang='ts'>
-// import { defineProps } from 'vue'
 defineProps(['menuList'])
 </script>
     
 <style lang='less' scoped>
-.icons{
+.icons {
     width: 24px;
     height: 18px;
     margin-right: 5px;

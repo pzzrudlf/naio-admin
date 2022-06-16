@@ -27,14 +27,14 @@ export interface DeleteParam {
 /**
  * 分配权限树数据查询参数
  */
-export interface AssignTreeParam{
-    userId:number | string;
-    roleId:number | string;
+export interface AssignTreeParam {
+    userId: number | string;
+    roleId: number | string;
 }
 /**
  * 分配权限保存参数
  */
-export interface AssignSaveParam{
-    roleId:string | number;
-    list:Array<string | number>;
+export interface AssignSaveParam {
+    roleId: string | number;
+    list: Array<string | number>;
 }
