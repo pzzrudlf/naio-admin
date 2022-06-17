@@ -28,7 +28,6 @@ export default function useAssignRole(dialog: DialogModel, onClose, onShow) {
             roleId: selectRoleId.value,
             userId: selecUserId.value
         }
-        console.log(parm)
         let res = await assingRoleSaveApi(parm)
         if (res && res.code == 200) {
             global.$message({ message: '分配成功', type: 'success' })
@@ -86,7 +85,6 @@ export default function useAssignRole(dialog: DialogModel, onClose, onShow) {
     }
     //单选按钮点击事件
     const getSelectRole = (row: any) => {
-        console.log(row)
         //设置选中的角色id
         selectRoleId.value = row.id
     }

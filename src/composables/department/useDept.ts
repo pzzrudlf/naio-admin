@@ -16,7 +16,6 @@ export default function useDept(getDeptList, searchForm: ListParam) {
     
     //搜索
     const searchBtn = () => {
-        console.log('searchBtn func')
         getDeptList()
     }
     const resetBtn = ()=>{
@@ -25,18 +24,14 @@ export default function useDept(getDeptList, searchForm: ListParam) {
     }
     //新增
     const addBtn = () => {
-        console.log('addBtn')
         addAndEditDeptRef.value?.show(EditType.ADD)
     }
     //编辑
     const editBtn = (row: DeptModel) => {
-        console.log('editBtn func', row)
         addAndEditDeptRef.value?.show(EditType.EDIT, row)
     }
     //删除
     const deleteBtn = async (row: DeptModel) => {
-        console.log('deleteBtn func')
-        console.log(global)
         let param = {
             id: row.id
         }
@@ -53,10 +48,6 @@ export default function useDept(getDeptList, searchForm: ListParam) {
     }
     //保存（新增、编辑）
     const save = async (model: AddAndEditDeptModel) => {
-        console.log('保存')
-        console.log(global)
-        console.log(model)
-
         //真正的提交表单
         let res: Result
         if (model.type == EditType.ADD) {//新增

@@ -21,7 +21,6 @@ export default function useDeptParent() {
     const handleNodeClick = (data: DeptModel)=>{
         selectNode.id = data.id
         selectNode.name = data.name
-        console.log(selectNode)
     }
     //获取树的数据
     const getTreeData = async ()=>{

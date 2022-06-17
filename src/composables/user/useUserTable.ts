@@ -19,8 +19,6 @@ export default function useUserTable() {
     //获取表格数据
     const getUserList = async () => {
         let res = await getUserListApi(listParam)
-        console.log(res)
-        // debugger
         if (res && res.code == 200) {
             tableData.list = res.data.records
             listParam.total = res.data.total
@@ -28,7 +26,6 @@ export default function useUserTable() {
     }
     //树点击数据
     const treeClick = (deptId: number) => {
-        console.log('父组件收到')
         //设置点击的部门id
         listParam.deptId = deptId
         //获取部门列表

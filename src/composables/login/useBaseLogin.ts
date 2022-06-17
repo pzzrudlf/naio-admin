@@ -7,11 +7,6 @@ export default function useBaseLogin(){
     //登录表单ref
     const formRef = ref<InstanceType<typeof ElForm>>()
     //表单绑定的数据域
-    // const loginModel = reactive<LoginParam>({
-    //     username:'18511013819',
-    //     password:'pzzrudlf',
-    //     code: ''
-    // })
     const loginModel = reactive<LoginParam>({
         username:'admin',
         password:'1234',

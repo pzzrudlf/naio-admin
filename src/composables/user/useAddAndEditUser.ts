@@ -39,7 +39,6 @@ export default function useAddAndEditUser(dialog: DialogModel, onShow: any, onCl
     const select = (node: SelectNode) => {
         addModel.deptId = node.id
         addModel.deptName = node.name
-        console.log(addModel)
     }
 
     return {

@@ -38,12 +38,9 @@ const removeTab = (targetName: string) => {
   const tabs = tabList.value
   let activeName = activeTab.value
   if (activeName === targetName) {
-    console.log(activeName)
-    console.log(targetName)
     tabs.forEach((tab: ITab, index: number) => {
       if (tab.path === targetName) {
         const nextTab = tabs[index + 1] || tabs[index - 1]
-        console.log(nextTab)
         if (nextTab) {
           activeName = nextTab.path
         }
@@ -58,7 +55,6 @@ const removeTab = (targetName: string) => {
 //解决刷新数据丢失问题
 const beforeUnload = () => {
   window.addEventListener("beforeunload", () => {
-    console.log('刷新了')
     sessionStorage.setItem("tabViews", JSON.stringify(tabList.value))
   })
   let tabSession = sessionStorage.getItem("tabViews")

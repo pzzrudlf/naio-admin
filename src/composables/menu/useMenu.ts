@@ -31,7 +31,6 @@ export default function useMenu(getMenuTable: any) {
     }
 
     const save = async (param: AddAndEditMenuModel) => {
-        console.log('父组件接收的参数==>', param)
         let res: Result
         if (param.type == EditType.ADD) {
             res = await addMenuApi(param)

@@ -21,7 +21,6 @@ export default function useMenuParent() {
     const handleNodeClick = (data: MenuModel)=>{
         selectNode.id = data.id
         selectNode.name = data.label 
-        console.log(selectNode)
     }
     //获取树的数据
     const getTreeData = async ()=>{

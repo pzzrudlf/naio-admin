@@ -23,10 +23,8 @@ export default function useLeftTree(emit){
  
      //树的点击事件
      const handleNodeClick = (data: DeptModel) => {
-         console.log('点击了树了')
          selectNode.id = data.id
          selectNode.name = data.name
-         console.log(selectNode)
          emit('treeClick', data.id)
      }
      //获取树的数据
@@ -48,7 +46,6 @@ export default function useLeftTree(emit){
  
      //加号和减号的点击事件
      const openBtn = (data: DeptModel) => {
-         console.log(data)
          //设置展开或者关闭
          data.open = !data.open
          if (parentTree.value) {

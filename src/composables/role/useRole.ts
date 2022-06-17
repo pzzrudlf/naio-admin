@@ -21,7 +21,6 @@ export default function useRole(getRoleList: any) {
         addRoleRef.value?.show(EditType.EDIT, row)
     }
     const deleteBtn = async (id: number | string) => {
-        console.log('role=>deleteBtn::', id)
         let param = {
             id: id
         }
@@ -35,7 +34,6 @@ export default function useRole(getRoleList: any) {
         }
     }
     const save = async (param: AddAndEditRoleModel) => {
-        console.log('父组件接收的参数==>', param)
         let res: Result
         if (param.type == EditType.ADD) {
             res = await addRoleApi(param)

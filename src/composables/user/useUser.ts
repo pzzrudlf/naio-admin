@@ -6,7 +6,7 @@ import { AddAndEditUserModel } from '@/api/user/userModel'
 import { addUserApi, editUserApi, deleteUserApi } from '@/api/user/user'
 
 export default function useUser(getUserList: any) {
-    //globale property
+
     const { global } = useInstance()
 
     //分配角色组件的ref属性
@@ -15,15 +15,12 @@ export default function useUser(getUserList: any) {
     const userAddRef = ref<{ show: (type: string, row?: AddAndEditUserModel) => void }>()
 
     const addBtn = () => {
-        console.log('addBtn')
         userAddRef.value?.show(EditType.ADD)
     }
     const editBtn = (row: AddAndEditUserModel) => {
-        console.log('editBtn', row)
         userAddRef.value?.show(EditType.EDIT, row)
     }
     const deleteBtn = async (id: number) => {
-        console.log('deleteBtn', id)
         let param = {
             id: id
         }
@@ -41,7 +38,6 @@ export default function useUser(getUserList: any) {
     }
 
     const save = async (param: AddAndEditUserModel) => {
-        console.log('父组件接收的参数==>', param)
         let res: Result
         if (param.type == EditType.ADD) {
             res = await addUserApi(param)
