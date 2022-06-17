@@ -5,7 +5,7 @@ import { EditType, Title } from '@/utils/baseEnum'
 import { DialogModel } from '@/utils/baseType'
 import useInstance from '@/hooks/useInstance'
 
-export default function useAddRole(dialog: DialogModel, onClose, onShow, emit: any) {
+export default function useAddAndEditRole(dialog: DialogModel, onClose, onShow, emit: any) {
 
     const { global } = useInstance()
     

@@ -14,7 +14,7 @@ export default function useRoleTable() {
         currentPage: 1,
         pageSize: 10,
         name: '',
-        total:0
+        total: 0
     })
 
     const getRoleList = async () => {

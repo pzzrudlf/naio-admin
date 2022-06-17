@@ -6,7 +6,7 @@ import { SelectNode } from '@/api/dept/deptModel'
 import { AddAndEditUserModel } from '@/api/user/userModel'
 import { EditType, Title } from '@/utils/baseEnum'
 
-export default function useUserAddAndEdit(dialog: DialogModel, onShow: any, onClose: any, addModel: AddAndEditUserModel, emit: any) {
+export default function useAddAndEditUser(dialog: DialogModel, onShow: any, onClose: any, addModel: AddAndEditUserModel, emit: any) {
 
     const { global } = useInstance()
 

@@ -64,17 +64,18 @@
 import DepartmentParent from '../department/DepartmentParent.vue'
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
-import useUserAddAndEdit from '@/composables/user/useUserAddAndEdit'
+import useAddAndEditUser from '@/composables/user/useAddAndEditUser'
 import useBaseModel from '@/composables/user/useBaseModel'
 import useSelectParent from '@/composables/department/useSelectParent'
 
-const emit = defineEmits(['save'])
 //基础属性
 const { addModel, rules } = useBaseModel()
 //弹框属性
 const { dialog, onShow, onClose } = useDialog()
+
+const emit = defineEmits(['save'])
 //新增、编辑弹框方法
-const { confirm, show, addUserForm, select } = useUserAddAndEdit(dialog, onShow, onClose, addModel, emit)
+const { confirm, show, addUserForm, select } = useAddAndEditUser(dialog, onShow, onClose, addModel, emit)
 //上级部门
 const { parentRef, selectParent } = useSelectParent()
 //暴露方法给外部使用

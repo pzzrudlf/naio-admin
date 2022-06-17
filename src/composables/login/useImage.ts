@@ -1,4 +1,4 @@
-import { ref,onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import { getImageApi } from '@/api/user/user'
 
 export default function useImage() {

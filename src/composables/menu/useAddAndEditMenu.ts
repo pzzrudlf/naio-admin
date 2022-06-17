@@ -2,17 +2,16 @@ import { ref, reactive } from 'vue'
 import { ElForm } from 'element-plus'
 import useInstance from '@/hooks/useInstance'
 import { DialogModel } from '@/utils/baseType'
-import { SelectNode } from '@/api/menu/menuModel'
 import { EditType, Title } from '@/utils/baseEnum'
-import { AddMenuModel, MenuModel } from '@/api/menu/menuModel'
+import { AddAndEditMenuModel, MenuModel, SelectNode } from '@/api/menu/menuModel'
 
-export default function useAddMenu(dialog: DialogModel, onShow, onClose, emit: any) {
+export default function useAddAndEditMenu(dialog: DialogModel, onShow, onClose, emit: any) {
 
     const { global } = useInstance()
 
     const addMenuForm = ref<InstanceType<typeof ElForm>>()
 
-    const addMenuModel = reactive<AddMenuModel>({
+    const addMenuModel = reactive<AddAndEditMenuModel>({
         id: '',
         editType: '', //新增、编辑
         type: '', //菜单类型 ： 0 目录 1 菜单  2 按钮

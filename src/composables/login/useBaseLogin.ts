@@ -1,4 +1,4 @@
-import {reactive,ref} from 'vue'
+import { reactive, ref } from 'vue'
 import { ElForm } from 'element-plus'
 import { LoginParam } from '@/api/user/userModel'
 import { validatePassword } from '@/utils/validator'

@@ -10,7 +10,7 @@ export default function useRole(getRoleList: any) {
     const { global } = useInstance()
 
     //分配权限弹框的ref属性
-    const assignMenuRef = ref<{show:(roleId:string,name:string)=>void}>()
+    const assignMenuRef = ref<{ show: (roleId: string, name: string) => void }>()
 
     const addRoleRef = ref<{ show: (type: string, row?: AddAndEditRoleModel) => void }>()
 
@@ -21,7 +21,7 @@ export default function useRole(getRoleList: any) {
         addRoleRef.value?.show(EditType.EDIT, row)
     }
     const deleteBtn = async (id: number | string) => {
-        console.log('role=>deleteBtn::',id)
+        console.log('role=>deleteBtn::', id)
         let param = {
             id: id
         }
@@ -50,7 +50,7 @@ export default function useRole(getRoleList: any) {
         }
     }
     const assignPermission = (roleId: string, name: string) => {
-        assignMenuRef.value?.show(roleId,name)
+        assignMenuRef.value?.show(roleId, name)
     }
 
     return {

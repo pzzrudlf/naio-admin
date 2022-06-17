@@ -23,13 +23,13 @@
 <script setup lang='ts'>
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
-import useAddRole from '@/composables/role/useAddRole'
+import useAddAndEditRole from '@/composables/role/useAddAndEditRole'
 
 //弹框属性
 const { dialog, onClose, onShow } = useDialog()
 
 const emit = defineEmits(['save'])
-const { confirm, show, addRoleModel, rules, addRoleForm } = useAddRole(dialog, onClose, onShow, emit)
+const { confirm, show, addRoleModel, rules, addRoleForm } = useAddAndEditRole(dialog, onClose, onShow, emit)
 
 //暴露方法
 defineExpose({

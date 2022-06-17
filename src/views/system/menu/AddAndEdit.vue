@@ -73,7 +73,7 @@
 <script setup lang='ts'>
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
-import useAddMenu from '@/composables/menu/useAddMenu'
+import useAddAndEditMenu from '@/composables/menu/useAddAndEditMenu'
 import MenuParent from './MenuParent.vue'
 import useSelectParent from '@/composables/menu/useSelectParent'
 //弹框属性
@@ -81,7 +81,7 @@ const { dialog, onShow, onClose } = useDialog()
 
 //注册事件
 const emit = defineEmits(['save'])
-const { confirm, show, addMenuForm, addMenuModel, rules, select } = useAddMenu(dialog, onShow, onClose, emit)
+const { confirm, show, addMenuForm, addMenuModel, rules, select } = useAddAndEditMenu(dialog, onShow, onClose, emit)
 
 //暴露方法
 defineExpose({
