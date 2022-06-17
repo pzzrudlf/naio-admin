@@ -34,15 +34,6 @@ export const useUserStore = defineStore({
         login(userinfo: LoginParam) {
             return new Promise<Result>((resolve, reject) => {
                 loginApi(userinfo).then((res) => {
-                    // debugger
-                    // res::
-                    // {
-                    //     error_code: 0,
-                    //     access_token:
-                    //     expires_in:
-                    //     token_type:
-                    //     msg: 'ok'
-                    // }
                     if (res.data.code == 200) {
                         // 设置到pinia中
                         this.setToken(res.data.token)

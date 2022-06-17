@@ -16,6 +16,7 @@ export const useMenuStore = defineStore({
                 {
                     path: '/dashboard',
                     component: "Layout",
+                    name: 'dashboard',
                     meta: {
                         title: "首页",
                         icon: "HomeFilled",
@@ -61,241 +62,50 @@ export const useMenuStore = defineStore({
 })
 
 /*
-                        {
-                            "msg": "获取成功",
-                            "code": 200,
-                            "data": [
+{
+    "msg": "获取成功",
+    "code": 200,
+    "data": [
+        {
+            "path": "/system",
+            "component": "Layout",
+            "name": "system",
+            "meta": {
+                "title": "系统管理",
+                "icon": "Setting",
+                "roles": [
+                    "sys:manage"
+                ]
+            },
+            "children": [
+                {
+                    "path": "/departmentList",
+                    "component": "/system/department/DepartmentList",
+                    "name": "departmentList",
+                    "meta": {
+                        "title": "机构管理",
+                        "icon": "List",
+                        "roles": [
+                            "sys:department"
+                        ]
+                    }
+                },
                                 {
-                                    "path": "/system",
-                                    "component": "Layout",
-                                    "name": "system",
-                                    "meta": {
-                                        "title": "系统管理",
-                                        "icon": "Setting",
-                                        "roles": [
-                                            "sys:manage"
-                                        ]
-                                    },
-                                    "children": [
-                                        {
-                                            "path": "/department",
-                                            "component": "/system/department/department",
-                                            "name": "department",
-                                            "meta": {
-                                                "title": "机构管理",
-                                                "icon": "List",
-                                                "roles": [
-                                                    "sys:dept"
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            "path": "/userList",
-                                            "component": "/system/User/UserList",
-                                            "name": "userList",
-                                            "meta": {
-                                                "title": "用户管理",
-                                                "icon": "UserFilled",
-                                                "roles": [
-                                                    "sys:user"
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            "path": "/roleList",
-                                            "component": "/system/Role/RoleList",
-                                            "name": "roleList",
-                                            "meta": {
-                                                "title": "角色管理",
-                                                "icon": "Wallet",
-                                                "roles": [
-                                                    "sys:role"
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            "path": "/menuList",
-                                            "component": "/system/Menu/MenuList",
-                                            "name": "menuList",
-                                            "meta": {
-                                                "title": "权限管理",
-                                                "icon": "Menu",
-                                                "roles": [
-                                                    "sys:menu"
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "path": "/test3parent",
-                                    "component": "Layout",
-                                    "name": "test3parent",
-                                    "redirect": "/test3",
-                                    "meta": {
-                                        "title": "测试1-1-1",
-                                        "icon": "ShoppingBag",
-                                        "roles": [
-                                            "sys:test"
-                                        ]
-                                    },
-                                    "children": [
-                                        {
-                                            "path": "/test3",
-                                            "component": "/test/test3",
-                                            "name": "test3",
-                                            "meta": {
-                                                "title": "测试1-1-1",
-                                                "icon": "ShoppingBag",
-                                                "roles": [
-                                                    "sys:test"
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                },
-                                {
-                                    "path": "/goods",
-                                    "component": "Layout",
-                                    "name": "goods",
-                                    "meta": {
-                                        "title": "商品管理",
-                                        "icon": "Tickets",
-                                        "roles": [
-                                            "sys:goods"
-                                        ]
-                                    },
-                                    "children": [
-                                        {
-                                            "path": "/phone1",
-                                            "name": "phone1",
-                                            "meta": {
-                                                "title": "手机分类",
-                                                "icon": "UserFilled",
-                                                "roles": [
-                                                    "sys:phoneRoot"
-                                                ]
-                                            },
-                                            "children": [
-                                                {
-                                                    "path": "/phone",
-                                                    "component": "/phone/index",
-                                                    "name": "phone",
-                                                    "meta": {
-                                                        "title": "华为手机",
-                                                        "icon": "UserFilled",
-                                                        "roles": [
-                                                            "sys:phone:index"
-                                                        ]
-                                                    }
-                                                }
-                                            ]
-                                        },
-                                        {
-                                            "path": "/goodCategory",
-                                            "component": "/goods/goodsCategory/goodsCategoryList",
-                                            "name": "goodCategory",
-                                            "meta": {
-                                                "title": "分类管理",
-                                                "icon": "ShoppingBag",
-                                                "roles": [
-                                                    "sys:goodsCategory"
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            "path": "/test2",
-                                            "name": "test",
-                                            "meta": {
-                                                "title": "分类测试",
-                                                "icon": "ShoppingBag",
-                                                "roles": [
-                                                    "sys:1"
-                                                ]
-                                            },
-                                            "children": [
-                                                {
-                                                    "path": "/cs1",
-                                                    "component": "/cs1/index",
-                                                    "name": "cs1",
-                                                    "meta": {
-                                                        "title": "测试1-2",
-                                                        "icon": "Menu",
-                                                        "roles": [
-                                                            "sys:cs1"
-                                                        ]
-                                                    },
-                                                    "children": [
-                                                        {
-                                                            "path": "/cs2",
-                                                            "component": "/test/test2",
-                                                            "name": "cs2",
-                                                            "meta": {
-                                                                "title": "测试1-2-1",
-                                                                "icon": "Menu",
-                                                                "roles": [
-                                                                    "sys:cs2"
-                                                                ]
-                                                            }
-                                                        }
-                                                    ]
-                                                },
-                                                {
-                                                    "path": "/test",
-                                                    "component": "/test/test",
-                                                    "name": "test",
-                                                    "meta": {
-                                                        "title": "测试1-1",
-                                                        "icon": "ShoppingBag",
-                                                        "roles": [
-                                                            "sys:1-1"
-                                                        ]
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    ]
-                                },
-                                {
-                                    "path": "/systenConfig",
-                                    "component": "Layout",
-                                    "name": "systenConfig",
-                                    "meta": {
-                                        "title": "系统工具",
-                                        "icon": "ChatLineSquare",
-                                        "roles": [
-                                            "sys:systenConfig"
-                                        ]
-                                    },
-                                    "children": [
-                                        {
-                                            "path": "/document",
-                                            "component": "/system/config/systemDocument",
-                                            "name": "http://42.193.158.170:8089/swagger-ui/index.html",
-                                            "meta": {
-                                                "title": "接口文档",
-                                                "icon": "DocumentCopy",
-                                                "roles": [
-                                                    "sys:document"
-                                                ]
-                                            }
-                                        },
-                                        {
-                                            "path": "/systemCode",
-                                            "component": "/system/config/code",
-                                            "name": "systemCode",
-                                            "meta": {
-                                                "title": "日志管理",
-                                                "icon": "Operation",
-                                                "roles": [
-                                                    "sys:systemCode"
-                                                ]
-                                            }
-                                        }
-                                    ]
-                                }
-                            ]
-                        }
+                    "path": "/userList",
+                    "component": "/system/user/UserList",
+                    "name": "userList",
+                    "meta": {
+                        "title": "管理员管理",
+                        "icon": "List",
+                        "roles": [
+                            "sys:user"
+                        ]
+                    }
+                }
+            ]
+        },
+    ]
+}
 */
 export function filterAsyncRoutes(routes: RouteRecordRaw[], router: any) {
     const res: Array<RouteRecordRaw> = []
@@ -307,7 +117,6 @@ export function filterAsyncRoutes(routes: RouteRecordRaw[], router: any) {
             if (component == 'Layout') {
                 tmp.component = Layout
             } else {
-                // console.log(component)
                 tmp.component = modules[`../views${component}.vue`]
             }
         }
@@ -315,10 +124,8 @@ export function filterAsyncRoutes(routes: RouteRecordRaw[], router: any) {
         if (tmp.children) {
             tmp.children = filterAsyncRoutes(tmp.children, router)
         }
-        // console.log(tmp)
         router.addRoute(tmp)
         res.push(tmp)
     })
-    console.log(res)
     return res
 }
