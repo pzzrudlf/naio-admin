@@ -1,4 +1,4 @@
-import { AddDeptModel } from '@/api/dept/deptModel'
+import { AddAndEditDeptModel } from '@/api/dept/deptModel'
 import { reactive } from 'vue'
 
 /**
@@ -20,7 +20,7 @@ export default function useBaseModel() {
     })
 
     //表单绑定的数据
-    const dialogModel = reactive<AddDeptModel>({
+    const dialogModel = reactive<AddAndEditDeptModel>({
         type: '',
         id: '',
         pid: '',

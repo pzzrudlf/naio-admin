@@ -68,7 +68,7 @@
         </template>
     </SysDialog>
     <!-- 上级弹框 -->
-    <MenuParent ref="parentRef" @select="select"></MenuParent>
+    <MenuParent ref="parentRef" @select="select" />
 </template>
 <script setup lang='ts'>
 import SysDialog from '@/components/SysDialog/SysDialog.vue'

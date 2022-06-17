@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import { Result } from '@/http/request'
 import { EditType } from '@/utils/baseEnum'
 import useInstance from '@/hooks/useInstance'
-import { AddMenuModel, MenuModel } from '@/api/menu/menuModel'
+import { AddAndEditMenuModel, MenuModel } from '@/api/menu/menuModel'
 import { addMenuApi, deleteMenuApi, editMenuApi } from '@/api/menu/menu'
 
 export default function useMenu(getMenuTable: any) {
@@ -30,7 +30,7 @@ export default function useMenu(getMenuTable: any) {
         }
     }
 
-    const save = async (param: AddMenuModel) => {
+    const save = async (param: AddAndEditMenuModel) => {
         console.log('父组件接收的参数==>', param)
         let res: Result
         if (param.type == EditType.ADD) {

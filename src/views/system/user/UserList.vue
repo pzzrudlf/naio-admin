@@ -40,9 +40,9 @@
         </el-main>
     </el-container>
     <!-- add edit dialog -->
-    <AddAndEditVue ref="userAddRef" @save="save"></AddAndEditVue>
+    <AddAndEdit ref="userAddRef" @save="save" />
     <!-- 分配角色弹框 -->
-    <AssignRole ref="assignRoleRef"></AssignRole>
+    <AssignRole ref="assignRoleRef" />
 </template>
 <script setup lang='ts'>
 import { Search, Setting, Close, Plus, Delete, Edit } from '@element-plus/icons-vue'
@@ -50,7 +50,7 @@ import useUserTable from '@/composables/user/useUserTable'
 import useUser from '@/composables/user/useUser'
 import LeftTree from './LeftTree.vue'
 import { ref, onMounted, nextTick } from 'vue'
-import AddAndEditVue from './AddAndEdit.vue'
+import AddAndEdit from './AddAndEdit.vue'
 import AssignRole from './AssignRole.vue'
 
 const containerHeight = ref(0)

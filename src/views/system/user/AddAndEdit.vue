@@ -58,10 +58,10 @@
     </template>
   </SysDialog>
   <!-- 上级部门的弹框 -->
-  <Parent ref="parentRef" @select="select"></Parent>
+  <DepartmentParent ref="parentRef" @select="select" />
 </template>
 <script setup lang='ts'>
-import Parent from '../department/Parent.vue'
+import DepartmentParent from '../department/DepartmentParent.vue'
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
 import useUserAddAndEdit from '@/composables/user/useUserAddAndEdit'

@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import { Result } from '@/http/request'
 import { EditType } from '@/utils/baseEnum'
 import useInstance from '@/hooks/useInstance'
-import { AddRoleModel } from '@/api/role/RoleModel'
+import { AddAndEditRoleModel } from '@/api/role/roleModel'
 import { addRoleApi, deleteRoleApi, editRoleApi } from '@/api/role/role'
 
 export default function useRole(getRoleList: any) {
@@ -12,12 +12,12 @@ export default function useRole(getRoleList: any) {
     //分配权限弹框的ref属性
     const assignMenuRef = ref<{show:(roleId:string,name:string)=>void}>()
 
-    const addRoleRef = ref<{ show: (type: string, row?: AddRoleModel) => void }>()
+    const addRoleRef = ref<{ show: (type: string, row?: AddAndEditRoleModel) => void }>()
 
     const addBtn = () => {
         addRoleRef.value?.show(EditType.ADD)
     }
-    const editBtn = (row: AddRoleModel) => {
+    const editBtn = (row: AddAndEditRoleModel) => {
         addRoleRef.value?.show(EditType.EDIT, row)
     }
     const deleteBtn = async (id: number | string) => {
@@ -34,7 +34,7 @@ export default function useRole(getRoleList: any) {
             }
         }
     }
-    const save = async (param: AddRoleModel) => {
+    const save = async (param: AddAndEditRoleModel) => {
         console.log('父组件接收的参数==>', param)
         let res: Result
         if (param.type == EditType.ADD) {

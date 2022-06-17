@@ -3,10 +3,10 @@ import { ElForm } from 'element-plus'
 import useInstance from '@/hooks/useInstance'
 import { DialogModel } from '@/utils/baseType'
 import { SelectNode } from '@/api/dept/deptModel'
-import { AddUserModel } from '@/api/user/userModel'
+import { AddAndEditUserModel } from '@/api/user/userModel'
 import { EditType, Title } from '@/utils/baseEnum'
 
-export default function useUserAddAndEdit(dialog: DialogModel, onShow: any, onClose: any, addModel: AddUserModel, emit: any) {
+export default function useUserAddAndEdit(dialog: DialogModel, onShow: any, onClose: any, addModel: AddAndEditUserModel, emit: any) {
 
     const { global } = useInstance()
 
@@ -22,7 +22,7 @@ export default function useUserAddAndEdit(dialog: DialogModel, onShow: any, onCl
         })
     }
 
-    const show = (type: string, row: AddUserModel) => {
+    const show = (type: string, row: AddAndEditUserModel) => {
         type == EditType.ADD ? dialog.title = Title.ADD : dialog.title = Title.EDIT
         onShow()
         //清空表单

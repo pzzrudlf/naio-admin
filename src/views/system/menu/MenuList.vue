@@ -34,14 +34,14 @@
             </el-table-column>
         </el-table>
     </el-main>
-    <AddMenu ref="addMenuRef" @save="save"></AddMenu>
+    <AddAndEdit ref="addMenuRef" @save="save" />
 </template>
 <script setup lang='ts'>
 import { Plus, Edit, Close } from '@element-plus/icons-vue'
 import { ref, onMounted, nextTick } from 'vue'
 import useMenuTable from '@/composables/menu/useMenuTable'
 import useMenu from '@/composables/menu/useMenu'
-import AddMenu from './AddMenu.vue'
+import AddAndEdit from './AddAndEdit.vue'
 
 //表格的高度
 const tableHeight = ref(0)

@@ -54,16 +54,15 @@
                     </el-col>
                 </el-row>
             </el-form>
-
         </template>
     </SysDialog>
     <!-- 上级部门的弹框 -->
-    <Parent ref="parentRef" @select="select"></Parent>
+    <DepartmentParent ref="parentRef" @select="select" />
 </template>
 <script setup lang='ts'>
 import { ref } from 'vue'
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
-import Parent from './Parent.vue'
+import DepartmentParent from './DepartmentParent.vue'
 import useDialog from '@/hooks/useDialog'
 import { EditType, Title } from '@/utils/BaseEnum'
 import useBaseModel from '@/composables/department/useBaseModel'
@@ -96,10 +95,6 @@ const confirm = () => {
             onClose()
         }
     })
-    // //返回值
-    // emit('save', dialogModel)
-    //关闭弹框
-    // onClose()
 }
 
 //父组件调用子组件展示弹框
@@ -115,7 +110,6 @@ const show = (type: string, row?: DeptModel) => {
     if (EditType.EDIT == type) {
         global.$objCopy(row, dialogModel)
     }
-
     //设置type
     dialogModel.type = type
 }
@@ -129,7 +123,6 @@ const { parentRef, selectParent } = useSelectParent()
 
 //选中上级的数据
 const select = (node: SelectNode) => {
-    console.log('父组件取到', node)
     dialogModel.pid = node.id
     dialogModel.parentName = node.name
 }

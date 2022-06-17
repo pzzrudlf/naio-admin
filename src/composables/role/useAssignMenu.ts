@@ -7,6 +7,7 @@ import { ElTree } from 'element-plus'
 import useInstance from '@/hooks/useInstance'
 
 export default function useAssignMenu(dialog: DialogModel, onShow, onClose) {
+    
     const { global } = useInstance()
 
     //权限树的ref属性

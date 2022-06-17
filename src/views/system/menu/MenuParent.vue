@@ -9,7 +9,6 @@
   </SysDialog>
 </template>
 <script setup lang='ts'>
-import { DocumentRemove, Plus, Minus } from '@element-plus/icons-vue'
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
 import useMenuParent from '@/composables/menu/useMenuParent'

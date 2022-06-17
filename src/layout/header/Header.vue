@@ -3,7 +3,7 @@
         <Collapse />
         <BredCurm />
     </div>
-    <UserInfo></UserInfo>
+    <UserInfo />
 </template>
 <script setup lang='ts'>
 import Collapse from './Collapse.vue'

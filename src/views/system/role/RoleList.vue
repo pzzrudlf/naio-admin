@@ -30,16 +30,16 @@
             background></el-pagination>
     </el-main>
     <!-- 新增、编辑 -->
-    <AddRole ref='addRoleRef' @save="save"></AddRole>
+    <AddAndEdit ref='addRoleRef' @save="save" />
     <!-- 分配权限弹框 -->
-    <AssignMenu ref="assignMenuRef"></AssignMenu>
+    <AssignMenu ref="assignMenuRef" />
 </template>
 <script setup lang='ts'>
 import { onMounted, ref, nextTick } from 'vue'
 import { Search, Close, Plus, Delete, Edit, Setting } from '@element-plus/icons-vue'
 import useRoleTable from '@/composables/role/useRoleTable'
 import useRole from '@/composables/role/useRole'
-import AddRole from './AddRole.vue'
+import AddAndEdit from './AddAndEdit.vue'
 import AssignMenu from './AssignMenu.vue'
 
 //表格高度

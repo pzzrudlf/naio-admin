@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 import { EditType } from '@/utils/baseEnum'
 import { addDeptApi, deleteDeptApi, editDeptApi } from '@/api/dept/dept'
-import { DeptModel, AddDeptModel, ListParam } from '@/api/dept/deptModel'
+import { DeptModel, AddAndEditDeptModel, ListParam } from '@/api/dept/deptModel'
 import { Result, StatusCode } from '@/http/request'
 import useInstance from '@/hooks/useInstance'
 
@@ -52,7 +52,7 @@ export default function useDept(getDeptList, searchForm: ListParam) {
         }
     }
     //保存（新增、编辑）
-    const save = async (model: AddDeptModel) => {
+    const save = async (model: AddAndEditDeptModel) => {
         console.log('保存')
         console.log(global)
         console.log(model)

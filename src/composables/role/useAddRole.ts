@@ -1,6 +1,6 @@
 import { reactive, ref } from 'vue'
 import { ElForm } from 'element-plus'
-import { AddRoleModel } from '@/api/role/roleModel'
+import { AddAndEditRoleModel } from '@/api/role/roleModel'
 import { EditType, Title } from '@/utils/baseEnum'
 import { DialogModel } from '@/utils/baseType'
 import useInstance from '@/hooks/useInstance'
@@ -11,7 +11,7 @@ export default function useAddRole(dialog: DialogModel, onClose, onShow, emit: a
     
     const addRoleForm = ref<InstanceType<typeof ElForm>>()
 
-    const addRoleModel = reactive<AddRoleModel>({
+    const addRoleModel = reactive<AddAndEditRoleModel>({
         id: '',
         name: '',
         remark: '',
@@ -37,7 +37,7 @@ export default function useAddRole(dialog: DialogModel, onClose, onShow, emit: a
         
     }
     //显示弹框
-    const show = (type: string, row: AddRoleModel) => {
+    const show = (type: string, row: AddAndEditRoleModel) => {
         //设置弹框标题
         type == EditType.ADD ? dialog.title = Title.ADD : Title.EDIT
         //显示弹框

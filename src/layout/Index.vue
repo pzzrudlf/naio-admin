@@ -1,11 +1,11 @@
 <template>
     <el-container class="layout">
         <el-aside width="auto" class="aside">
-            <MenuBar></MenuBar>
+            <MenuBar />
         </el-aside>
         <el-container>
             <el-header class="header">
-                <Header></Header>
+                <Header />
             </el-header>
             <el-main class="main">
                 <Tab />

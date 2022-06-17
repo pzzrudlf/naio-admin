@@ -7,7 +7,7 @@
                 <Icon class="icons" v-else :icon="menu.meta.icon" />
                 <span>{{ menu.meta.title }}</span>
             </template>
-            <menu-item :menuList="menu.children"></menu-item>
+            <MenuItem :menuList="menu.children" />
         </el-sub-menu>
         <el-menu-item style="color: #f4f4f5" v-else :index="menu.path">
             <i v-if="menu.meta.icon && menu.meta.icon.includes('el-icon')" :class="menu.meta.icon"></i>

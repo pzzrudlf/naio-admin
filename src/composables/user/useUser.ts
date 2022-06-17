@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import { Result } from '@/http/request'
 import { EditType } from '@/utils/baseEnum'
 import useInstance from '@/hooks/useInstance'
-import { AddUserModel } from '@/api/user/userModel'
+import { AddAndEditUserModel } from '@/api/user/userModel'
 import { addUserApi, editUserApi, deleteUserApi } from '@/api/user/user'
 
 export default function useUser(getUserList: any) {
@@ -12,13 +12,13 @@ export default function useUser(getUserList: any) {
     //分配角色组件的ref属性
     const assignRoleRef = ref<{ show: (name: string, userId: string | number) => void }>()
 
-    const userAddRef = ref<{ show: (type: string, row?: AddUserModel) => void }>()
+    const userAddRef = ref<{ show: (type: string, row?: AddAndEditUserModel) => void }>()
 
     const addBtn = () => {
         console.log('addBtn')
         userAddRef.value?.show(EditType.ADD)
     }
-    const editBtn = (row: AddUserModel) => {
+    const editBtn = (row: AddAndEditUserModel) => {
         console.log('editBtn', row)
         userAddRef.value?.show(EditType.EDIT, row)
     }
@@ -36,11 +36,11 @@ export default function useUser(getUserList: any) {
             }
         }
     }
-    const assignBtn = (row: AddUserModel) => {
+    const assignBtn = (row: AddAndEditUserModel) => {
         assignRoleRef.value?.show(row.loginName, row.id)
     }
 
-    const save = async (param: AddUserModel) => {
+    const save = async (param: AddAndEditUserModel) => {
         console.log('父组件接收的参数==>', param)
         let res: Result
         if (param.type == EditType.ADD) {

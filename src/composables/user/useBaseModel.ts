@@ -1,9 +1,9 @@
 import { reactive } from 'vue'
-import { AddUserModel } from '@/api/user/userModel'
+import { AddAndEditUserModel } from '@/api/user/userModel'
 
 export default function useBaseModel(){
     //表单绑定的数据
-    const addModel = reactive<AddUserModel>({
+    const addModel = reactive<AddAndEditUserModel>({
         type:'',
         id: '',
         deptId: '',
