@@ -48,7 +48,6 @@ export const useMenuStore = defineStore({
                 getMenuListApi().then(res => {
                     let accessedRoutes: RouteRecordRaw[] = []
                     if (res.code == 200) {
-                        // console.log('res.data',res.data)
                         accessedRoutes = filterAsyncRoutes(res.data, router)
                     }
                     this.setMenuList(accessedRoutes)
