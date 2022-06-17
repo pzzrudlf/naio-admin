@@ -6,21 +6,12 @@
             </div>
             <!-- username -->
             <el-form-item prop="username">
-                <span class="svg-container">
-                    <svg-icon name="user"></svg-icon>
-                </span>
                 <el-input placeholder="username" name="username" type="text" v-model="loginModel.username"></el-input>
             </el-form-item>
             <!-- password -->
             <el-form-item prop="password">
-                <span class="svg-container">
-                    <svg-icon name="password"></svg-icon>
-                </span>
                 <el-input placeholder="password" name="password" tabindex="2" auto-complete="on"
                     v-model="loginModel.password"></el-input>
-                <span class="show-pwd">
-                    <svg-icon name="eye"></svg-icon>
-                </span>
             </el-form-item>
             <el-form-item prop='code'>
                 <el-row :gutter="20">
@@ -40,7 +31,6 @@
 </template>
     
 <script setup lang='ts'>
-import SvgIcon from '@/components/SvgIcon/SvgIcon.vue'
 import useBaseLogin from '@/composables/login/useBaseLogin'
 import useLogin from '@/composables/login/useLogin'
 import useImage from '@/composables/login/useImage'
@@ -115,12 +105,12 @@ const { login } = useLogin(loginModel)
         }
     }
 
-    .svg-container {
-        padding: 6px 5px 6px 15px;
-        color: @dark_gray;
-        vertical-align: middle;
-        display: inline-block;
-    }
+    // .svg-container {
+    //     padding: 6px 5px 6px 15px;
+    //     color: @dark_gray;
+    //     vertical-align: middle;
+    //     display: inline-block;
+    // }
 
     .title-container {
         position: relative;

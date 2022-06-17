@@ -38,7 +38,6 @@ declare module '@vue/runtime-core' {
     ElTree: typeof import('element-plus/es')['ElTree']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
-    SvgIcon: typeof import('./src/components/SvgIcon/SvgIcon.vue')['default']
     SysDialog: typeof import('./src/components/SysDialog/SysDialog.vue')['default']
     TestDialog: typeof import('./src/components/TestDialog/TestDialog.vue')['default']
   }
