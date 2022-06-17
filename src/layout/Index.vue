@@ -8,7 +8,7 @@
                 <Header></Header>
             </el-header>
             <el-main class="main">
-                <Tabs />
+                <Tab />
                 <router-view></router-view>
             </el-main>
         </el-container>
@@ -18,7 +18,7 @@
 <script setup lang='ts'>
 import Header from './header/Header.vue'
 import MenuBar from './menu/MenuBar.vue'
-import Tabs from './tabs/Tabs.vue'
+import Tab from './tab/Tab.vue'
 </script>
     
 <style lang='less' scoped>

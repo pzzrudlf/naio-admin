@@ -1,14 +1,13 @@
 import { defineStore } from 'pinia'
-import { ICollapse, Types } from './types'
+import { Type, ICollapseState } from './type'
 
 export const useCollapseStore = defineStore({
-    id: Types.COLLAPSE,
-    state: () => {
-        let data: ICollapse = {
+    id: Type.COLLAPSE,
+    state: (): ICollapseState => {
+        return {
             count: 0,
             collapse: false
         }
-        return data
     },
     getters: {
         getCount(): number {

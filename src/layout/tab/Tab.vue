@@ -1,21 +1,21 @@
 <template>
   <el-tabs v-model="activeTab" type="card" @tab-click="tabClick" closable @tab-remove="removeTab">
-    <el-tab-pane v-for="item in tabsList" :key="item.path" :label="item.title" :name="item.path"></el-tab-pane>
+    <el-tab-pane v-for="item in tabList" :key="item.path" :label="item.title" :name="item.path"></el-tab-pane>
   </el-tabs>
 </template>
 <script setup lang='ts'>
 import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useTabsStore } from '@/store/tabs'
-import { ITab } from '@/store/types'
+import { useTabStore } from '@/store/tab'
+import { ITab } from '@/store/type'
 
 const route = useRoute()
 const router = useRouter()
-const tabsStore = useTabsStore()
+const tabStore = useTabStore()
 
 const activeTab = ref('')
-const tabsList = computed(() => {
-  return tabsStore.getTabsList
+const tabList = computed(() => {
+  return tabStore.getTabList
 })
 const addTab = () => {
   const { path, meta } = route
@@ -23,7 +23,7 @@ const addTab = () => {
     title: meta.title as string,
     path: path
   }
-  tabsStore.addTab(tab)
+  tabStore.addTab(tab)
 }
 
 const setActive = () => {
@@ -35,7 +35,7 @@ const tabClick = (tab: any) => {
 }
 const removeTab = (targetName: string) => {
   if (targetName === '/dashboard') return;
-  const tabs = tabsList.value
+  const tabs = tabList.value
   let activeName = activeTab.value
   if (activeName === targetName) {
     console.log(activeName)
@@ -51,7 +51,7 @@ const removeTab = (targetName: string) => {
     })
   }
   activeTab.value = activeName
-  tabsStore.$state.tabsList = tabs.filter((tab: ITab) => tab.path !== targetName)
+  tabStore.$state.tabList = tabs.filter((tab: ITab) => tab.path !== targetName)
   router.push({ path: activeName })
 }
 
@@ -59,13 +59,13 @@ const removeTab = (targetName: string) => {
 const beforeUnload = () => {
   window.addEventListener("beforeunload", () => {
     console.log('刷新了')
-    sessionStorage.setItem("tabViews", JSON.stringify(tabsList.value))
+    sessionStorage.setItem("tabViews", JSON.stringify(tabList.value))
   })
   let tabSession = sessionStorage.getItem("tabViews")
   if (tabSession) {
     let oldViews = JSON.parse(tabSession)
     if (oldViews.length > 0) {
-      tabsStore.$state.tabsList = oldViews
+      tabStore.$state.tabList = oldViews
     }
   }
 }

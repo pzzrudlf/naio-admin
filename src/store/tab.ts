@@ -1,14 +1,13 @@
 import { defineStore } from 'pinia'
-import { ITab, Types } from './types'
+import { Type, ITabState, ITab } from './type'
 
-export const useTabsStore = defineStore({
-    id: Types.TABS,
-    state: () => {
-        let data: ITab[] = []
+export const useTabStore = defineStore({
+    id: Type.TAB,
+    state: (): ITabState => {
         return {
             count: 0,
             collapse: false,
-            tabsList: data
+            tabList: []
         }
     },
     getters: {
@@ -19,8 +18,8 @@ export const useTabsStore = defineStore({
         getCollapse(): boolean {
             return this.collapse
         },
-        getTabsList(): any[] {
-            return this.tabsList
+        getTabList(): ITab[] {
+            return this.tabList
         }
     },
     actions: {
@@ -31,8 +30,8 @@ export const useTabsStore = defineStore({
             this.$state.collapse = collapse
         },
         addTab(tab: ITab){
-            if(this.$state.tabsList.some(item=>item.path===tab.path)) return
-            this.$state.tabsList.push(tab)
+            if(this.$state.tabList.some(item=>item.path===tab.path)) return
+            this.$state.tabList.push(tab)
         }
     }
 

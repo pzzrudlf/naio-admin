@@ -1,20 +1,13 @@
 import { defineStore } from 'pinia'
 import { loginApi, getInfoApi } from '@/api/user/user'
-import { Types } from './types'
+import { Type, IUserState } from './type'
 import { LoginParam } from '@/api/user/userModel'
 import { Result } from '@/http/request'
 import { setToken as baseSetToken, setUserId, setExpireTime, getToken } from '@/utils/auth'
 
-
-export type UserState = {
-    token: string,
-    userId: string | number,
-    permissions: string[],
-}
-
 export const useUserStore = defineStore({
-    id: Types.USER,
-    state: (): UserState => {
+    id: Type.USER,
+    state: (): IUserState => {
         return {
             token: getToken() || '',
             userId: '',
@@ -83,16 +76,5 @@ export const useUserStore = defineStore({
         setRoles(roles: any[]) {
             this.$state.permissions = roles
         }
-    },
-    // 开启数据缓存，此处使用了pinia-plugin-persist插件
-    // persist: {
-    //     enabled: true,
-    //     strategies: [
-    //         {
-    //             key: Types.USER,
-    //             storage: localStorage,
-    //             paths: ['token']
-    //         }
-    //     ]
-    // }
+    }
 })

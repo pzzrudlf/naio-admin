@@ -1,20 +1,14 @@
 import { defineStore } from 'pinia'
 import { RouteRecordRaw } from 'vue-router'
 import { getMenuListApi } from '../api/menu/menu'
-import { Types } from './types'
+import { Type, IMenuState } from './type'
 import Layout from '@/layout/Index.vue'
 
 const modules = import.meta.glob('../views/**/*.vue')
 
-export type MenuState = {
-    count: number,
-    collapse: boolean,
-    menuList: any,
-}
-
 export const useMenuStore = defineStore({
-    id: Types.MENU,
-    state: (): MenuState => {
+    id: Type.MENU,
+    state: (): IMenuState => {
         return {
             count: 0,
             collapse: false,
