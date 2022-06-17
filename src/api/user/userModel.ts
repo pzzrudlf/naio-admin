@@ -44,7 +44,7 @@ export interface UserListParam {
 /**
  * 表单提交的参数
  */
-export interface AddUserModel {
+export interface AddAndEditUserModel {
     type: string;//add or edit
     id: string | number;
     deptId: string | number;

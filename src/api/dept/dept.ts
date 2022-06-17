@@ -1,5 +1,5 @@
 import http from '@/http/http'
-import { AddDeptModel, ListParam } from './deptModel'
+import { AddAndEditDeptModel, ListParam } from './deptModel'
 
 enum Api {
     getDeptList = '/api/department/list',
@@ -20,12 +20,12 @@ export const getDeptParentApi = async () => {
 }
 
 //新增
-export const addDeptApi = async (param: AddDeptModel) => {
+export const addDeptApi = async (param: AddAndEditDeptModel) => {
     return await http.post(Api.add, param)
 }
 
 //编辑
-export const editDeptApi = async (param: AddDeptModel) => {
+export const editDeptApi = async (param: AddAndEditDeptModel) => {
     return await http.put(Api.edit, param)
 }
 

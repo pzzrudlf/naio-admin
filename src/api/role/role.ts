@@ -1,5 +1,5 @@
 import http from '@/http/http'
-import { AddRoleModel, DeleteParam, RoleListParam, AssignTreeParam, AssignSaveParam } from './roleModel'
+import { AddAndEditRoleModel, DeleteRoleParam, RoleListParam, AssignTreeParam, AssignSaveParam } from './roleModel'
 
 enum Api {
     getList = '/api/role/list',
@@ -14,15 +14,15 @@ export const getRoleListApi = async (param: RoleListParam) => {
     return await http.get(Api.getList, param)
 }
 //新增
-export const addRoleApi = async (param: AddRoleModel) => {
+export const addRoleApi = async (param: AddAndEditRoleModel) => {
     return await http.post(Api.addRole, param)
 }
 //编辑
-export const editRoleApi = async (param: AddRoleModel) => {
+export const editRoleApi = async (param: AddAndEditRoleModel) => {
     return await http.put(Api.editRole, param)
 }
 //删除
-export const deleteRoleApi = async (param: DeleteParam) => {
+export const deleteRoleApi = async (param: DeleteRoleParam) => {
     return await http.delete(Api.deleteRole, param)
 }
 

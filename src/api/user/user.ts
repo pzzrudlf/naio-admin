@@ -1,5 +1,5 @@
 import http from '@/http/http'
-import { AddUserModel, AssignRoleListParam, SelectRoleParam, LoginParam, LoginResult, UserInfo, UserListParam } from './userModel'
+import { AddAndEditUserModel, AssignRoleListParam, SelectRoleParam, LoginParam, LoginResult, UserInfo, UserListParam } from './userModel'
 
 enum Api {
     getImg = '/api/sysUser/image',
@@ -45,11 +45,11 @@ export const getUserListApi = async (param: UserListParam) => {
     return await http.get(Api.getUserList, param)
 }
 
-export const addUserApi = async (param: AddUserModel) => {
+export const addUserApi = async (param: AddAndEditUserModel) => {
     return await http.post(Api.addAndEditUser, param)
 }
 
-export const editUserApi = async (param: AddUserModel) => {
+export const editUserApi = async (param: AddAndEditUserModel) => {
     return await http.put(Api.addAndEditUser, param)
 }
 

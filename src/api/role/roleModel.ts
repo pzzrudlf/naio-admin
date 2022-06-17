@@ -12,7 +12,7 @@ export interface RoleListParam {
 /**
  * 角色类型定义
  */
-export interface AddRoleModel {
+export interface AddAndEditRoleModel {
     id: number | string;
     name: string;
     remark: string;
@@ -20,7 +20,7 @@ export interface AddRoleModel {
     type: string; //新增、编辑
 }
 
-export interface DeleteParam {
+export interface DeleteRoleParam {
     id: number | string;
 }
 

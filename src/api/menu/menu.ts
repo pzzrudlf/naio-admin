@@ -1,5 +1,5 @@
 import http from '@/http/http'
-import { AddMenuModel } from './menuModel'
+import { AddAndEditMenuModel } from './menuModel'
 
 enum Api {
     getMenuList = '/api/sysUser/getMenuList',
@@ -22,11 +22,11 @@ export const getParentApi = async () => {
     return await http.get(Api.getParent)
 }
 //新增
-export const addMenuApi = async (param: AddMenuModel) => {
+export const addMenuApi = async (param: AddAndEditMenuModel) => {
     return await http.post(Api.add, param)
 }
 //编辑
-export const editMenuApi = async (param: AddMenuModel) => {
+export const editMenuApi = async (param: AddAndEditMenuModel) => {
     return await http.put(Api.edit, param)
 }
 //删除

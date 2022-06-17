@@ -1,8 +1,13 @@
-//搜索关键字
+/**
+ * 搜索关键字
+ */
 export interface ListParam {
     searchName: string;
 }
-//表格数据
+
+/**
+ * 机构类型定义
+ */
 export interface DeptModel {
     id: number;
     pid: number;
@@ -17,8 +22,11 @@ export interface DeptModel {
     open: boolean;
     children: Array<DeptModel>;
 }
-//新增、编辑 表单提交的数据类型
-export interface AddDeptModel {
+
+/**
+ * 新增、编辑 表单提交的数据类型
+ */
+export interface AddAndEditDeptModel {
     type: string; // 新增、编辑
     id: string | number;
     pid: string | number;
@@ -30,7 +38,10 @@ export interface AddDeptModel {
     deptCode: string;
     orderNum: string;
 }
-//上级部门树选中的数据
+
+/**
+ * 上级部门树选中的数据
+ */
 export interface SelectNode {
     id: string | number;
     name: string;
