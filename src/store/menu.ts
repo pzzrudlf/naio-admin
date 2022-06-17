@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
 import { RouteRecordRaw } from 'vue-router'
-import { getMenuListApi } from '../api/menu/menu'
+import { getMenuListApi } from '@/api/menu/menu'
 import { Type, IMenuState } from './type'
 import Layout from '@/layout/Index.vue'
 
