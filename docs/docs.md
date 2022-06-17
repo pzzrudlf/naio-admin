@@ -1,16 +1,15 @@
-#### Vite2 + Vue3 + TypeScript + Element Plus开发后台管理系统实战视频教程
+#### Vite2 + Vue3 + TypeScript + Element Plus后台管理系统
 
 
+#### 第01讲 介绍与展示
 
-#### 第01讲 课程介绍与项目展示
-
-##### 1、课程适合对象
+##### 1、适合对象
 
 ```js
-有Vue2、Vue3组合api基础知识，TypeScript基础知识的小伙伴；
+具有Vue3组合api基础知识，TypeScript基础知识
 ```
 
-##### 2、课程涉及技术
+##### 2、涉及技术
 
 ```js
 1、CSS3 | Less
@@ -22,7 +21,7 @@
 7、Element-plus 2.1.9
 ```
 
-##### 3、课程收获
+##### 3、收获
 
 ```js
 1、掌握Vue3.2语法糖的使用
@@ -61,37 +60,19 @@ OR
 yarn create vite
 ```
 
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\1-1.png)
-
-
-
 ##### 2、 Project name填写项目名称
-
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\1-2.png)
 
 ##### 3、选择框架，此处选择vue
 
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\1-3.png)
-
 ##### 4、选择 vue-ts
-
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\1-4.png)
 
 ##### 5、进入项目，执行 npm install 安装依赖
 
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\1-5.png)
-
-
-
 ##### 6、运行项目  npm run dev
-
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\1-6.png)
-
-
 
 ##### 7、解决 Network: use `--host` to expose
 
-vite.config.js配置文件，添加如下配置
+vite.config.ts配置文件，添加如下配置
 
 ```js
 server: {
@@ -150,10 +131,6 @@ export default defineConfig({
 ```js
 npm install vue-router@4
 ```
-
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\2-2.png)
-
-
 
 ###### 2、在src下新建router目录，然后新建index.ts文件
 
@@ -387,10 +364,10 @@ module.exports = {
 }
 ```
 
-##### 4、添加 css 预处理器 sass
+##### 4、添加 css 预处理器 less
 
 ```js
-npm install -D sass sass-loader
+npm install -D less less-loader
 ```
 
 
@@ -408,7 +385,7 @@ https://element-plus.gitee.io/zh-CN/guide/installation.html
 ##### 2、安装element-plus
 
 ```js
- npm install element-plus --save
+ npm install element-plus @element-plus/icons-vue --save
 ```
 
 ##### 3、main.ts中引入
@@ -447,11 +424,6 @@ export default defineComponent({
 ```
 
 ##### 5、出现如下所示，说明element-plus引入成功
-
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\1-12.png)
-
-
-
 
 
 #### 第07讲  主界面布局
@@ -517,7 +489,7 @@ export default defineComponent({
   <router-view/>
 </template>
 
-<style lang="scss">
+<style lang="less">
 </style>
 ```
 
@@ -535,7 +507,7 @@ export default defineComponent({
 </template>
 <script setup lang="ts">
 </script>
-<style lang="scss">
+<style lang="less">
 .layout {
     height: 100%;
     .asside {
@@ -579,12 +551,6 @@ export default router
 ```js
 http://localhost:8080/
 ```
-
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\2-4.png)
-
-
-
-
 
 #### 第08讲  左侧导航菜单制作讲解1
 
@@ -670,21 +636,21 @@ const props = defineProps({
 <template>
     <el-container class="layout">
         <el-aside class="asside" width="auto">
-            <MenuBarVue></MenuBarVue>
+            <MenuBar />
         </el-aside>
         <el-container class="layout">
             <el-header class="header">
-                <HeaderVue></HeaderVue>
+                <Header />
             </el-header>
             <el-main class="main">Main</el-main>
         </el-container>
     </el-container>
 </template>
 <script setup lang="ts">
-import MenuBarVue from './menu/MenuBar.vue';
-import HeaderVue from './header/Header.vue';
+import MenuBar from './menu/MenuBar.vue';
+import Header from './header/Header.vue';
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .layout {
     height: 100%;
     .asside {
@@ -767,21 +733,21 @@ const isCollapse = ref(false);
 <template>
     <el-container class="layout">
         <el-aside class="asside" width="auto">
-            <MenuBarVue></MenuBarVue>
+            <MenuBar />
         </el-aside>
         <el-container class="layout">
             <el-header class="header">
-                <HeaderVue></HeaderVue>
+                <Header />
             </el-header>
             <el-main class="main">Main</el-main>
         </el-container>
     </el-container>
 </template>
 <script setup lang="ts">
-import MenuBarVue from './menu/MenuBar.vue';
-import HeaderVue from './header/Header.vue';
+import MenuBar from './menu/MenuBar.vue';
+import Header from './header/Header.vue';
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .layout {
     height: 100%;
     .asside {
@@ -843,10 +809,6 @@ import {defineProps} from 'vue'
 //接收父组件MenuBar传递过来的值
 defineProps(['menuList'])
 </script>
-
-<style scoped>
-
-</style>
 ```
 
 
@@ -868,11 +830,11 @@ defineProps(['menuList'])
         background-color="#304156"
         unique-opened
     >
-        <MenuItemVue :menuList='menuList'></MenuItemVue>
+        <MenuItem :menuList='menuList'></MenuItem>
     </el-menu>
 </template>
 <script lang="ts" setup>
-import MenuItemVue from './MenuItem.vue';
+import MenuItem from './MenuItem.vue';
 import { ref,reactive } from 'vue';
 //菜单数据
 let menuList = reactive([
@@ -1088,10 +1050,6 @@ const isCollapse = ref(false);
 
 ##### 2、效果展示
 
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\2-3.png)
-
-
-
 ##### 3、在menu目录下，新建MenuLogo.vue组件
 
 ```js
@@ -1103,7 +1061,7 @@ const isCollapse = ref(false);
 </template>
 <script setup lang="ts">
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .logo {
     background-color: #2b2f3a;
     height: 50px;
@@ -1372,10 +1330,10 @@ Element Plus 团队正在将原有组件内的 Font Icon 向 SVG Icon 迁移，�
 
 ```js
 1、安装
-npm install @element-plus/icons
+npm install @element-plus/icons-vue
 
 2、引入图标
-import { Fold } from '@element-plus/icons'
+import { Fold } from '@element-plus/icons-vue'
 
 3、使用方式
 <el-icon>
