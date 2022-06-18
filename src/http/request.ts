@@ -4,15 +4,12 @@ import { getToken } from '@/utils/auth'
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosPromise, AxiosResponse } from 'axios'
 
 export interface Result<T = any> {
-    error_code: number;
-    code: number; //将要废弃使用
+    code: number;
     msg: string;
     data: T;
 }
 export enum StatusCode{
-    // NoAuth  = 40100, //token失效
     NoAuth  = 600, //token失效
-    // Success = 0, //返回成功
     Success = 200, //返回成功
 }
 class request {

@@ -6,12 +6,24 @@
             </div>
             <!-- username -->
             <el-form-item prop="username">
-                <el-input placeholder="username" name="username" type="text" v-model="loginModel.username"></el-input>
+                <el-input placeholder="username" name="username" type="text" v-model="loginModel.username">
+                    <template #prefix>
+                        <el-icon>
+                            <User />
+                        </el-icon>
+                    </template>
+                </el-input>
             </el-form-item>
             <!-- password -->
             <el-form-item prop="password">
                 <el-input placeholder="password" name="password" tabindex="2" auto-complete="on"
-                    v-model="loginModel.password"></el-input>
+                    v-model="loginModel.password">
+                    <template #prefix>
+                        <el-icon>
+                            <Lock />
+                        </el-icon>
+                    </template>
+                </el-input>
             </el-form-item>
             <el-form-item prop='code'>
                 <el-row :gutter="20">
@@ -31,27 +43,15 @@
 </template>
     
 <script setup lang='ts'>
+import { User, Lock } from '@element-plus/icons-vue'
 import useBaseModel from '@/composables/login/useBaseModel'
 import useLogin from '@/composables/login/useLogin'
 import useImage from '@/composables/login/useImage'
-
-// el-form :model
-// el-form :rules
-// el-form-item :prop
-// 保证以上三点即可为el-form添加表单校验功能
 
 // 验证码
 const { imgSrc, getImage } = useImage()
 // 数据源
 const { loginModel, loginRules, formRef } = useBaseModel()
-
-// 登录方案:
-// 封装axios模块
-// 接口请求模块
-// 登录请求动作
-
-// token缓存
-// 登录鉴权
 
 const { login } = useLogin(loginModel)
 
@@ -72,6 +72,7 @@ const { login } = useLogin(loginModel)
     display: flex;
     justify-content: center;
     align-items: center;
+
     .login-form {
         position: relative;
         width: 520px;
@@ -134,6 +135,7 @@ const { login } = useLogin(loginModel)
         user-select: none;
     }
 }
+
 :deep(.el-row) {
     width: 100% !important;
 }
