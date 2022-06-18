@@ -31,7 +31,7 @@
 </template>
     
 <script setup lang='ts'>
-import useBaseLogin from '@/composables/login/useBaseLogin'
+import useBaseModel from '@/composables/login/useBaseModel'
 import useLogin from '@/composables/login/useLogin'
 import useImage from '@/composables/login/useImage'
 
@@ -43,7 +43,7 @@ import useImage from '@/composables/login/useImage'
 // 验证码
 const { imgSrc, getImage } = useImage()
 // 数据源
-const { loginModel, loginRules, formRef } = useBaseLogin()
+const { loginModel, loginRules, formRef } = useBaseModel()
 
 // 登录方案:
 // 封装axios模块

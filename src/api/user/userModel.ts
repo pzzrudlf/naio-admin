@@ -1,15 +1,10 @@
+/**
+ * 登录参数
+ */
 export interface LoginParam {
     username: string;
     password: string;
     code: string;
-}
-
-export interface LoginResult2 {
-    error_code: number;
-    access_token: string;
-    expires_in: number;
-    token_type: string;
-    msg: string;
 }
 
 /**

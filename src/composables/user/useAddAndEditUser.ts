@@ -16,7 +16,6 @@ export default function useAddAndEditUser(dialog: DialogModel, onShow: any, onCl
         addUserForm.value?.validate((valid) => {
             if (valid) {
                 emit('save', addModel)
-                //close dialog
                 onClose()
             }
         })

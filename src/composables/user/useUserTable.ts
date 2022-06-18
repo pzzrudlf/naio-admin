@@ -11,6 +11,7 @@ export default function useUserTable() {
         loginName: '',
         total: 0
     })
+
     //表格数据
     const tableData = reactive({
         list: []
@@ -24,6 +25,7 @@ export default function useUserTable() {
             listParam.total = res.data.total
         }
     }
+
     //树点击数据
     const treeClick = (deptId: number) => {
         //设置点击的部门id
@@ -31,16 +33,19 @@ export default function useUserTable() {
         //获取部门列表
         getUserList()
     }
+
     //页容量改变触发
     const sizeChange = (size: number) => {
         listParam.pageSize = size
         getUserList()
     }
+
     //页数改变触发
     const currentChange = (page: number) => {
         listParam.currentPage = page
         getUserList()
     }
+
     onMounted(() => {
         getUserList()
     })
@@ -53,6 +58,7 @@ export default function useUserTable() {
         listParam.loginName = ''
         getUserList()
     }
+    
     return {
         listParam,
         tableData,

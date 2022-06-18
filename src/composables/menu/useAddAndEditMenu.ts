@@ -6,11 +6,8 @@ import { EditType, Title } from '@/utils/baseEnum'
 import { AddAndEditMenuModel, MenuModel, SelectNode } from '@/api/menu/menuModel'
 
 export default function useAddAndEditMenu(dialog: DialogModel, onShow, onClose, emit: any) {
-
     const { global } = useInstance()
-
     const addMenuForm = ref<InstanceType<typeof ElForm>>()
-
     const addMenuModel = reactive<AddAndEditMenuModel>({
         id: '',
         editType: '', //新增、编辑
@@ -84,17 +81,14 @@ export default function useAddAndEditMenu(dialog: DialogModel, onShow, onClose, 
             },
         ]
     })
-
     const confirm = () => {
         addMenuForm.value?.validate((valid) => {
             if (valid) {
                 emit('save', addMenuModel)
-                //关闭弹框
                 onClose()
             }
         })
     }
-
     //显示弹框
     const show = (type: string, row: MenuModel) => {
         //设置弹框标题
@@ -108,14 +102,11 @@ export default function useAddAndEditMenu(dialog: DialogModel, onShow, onClose, 
         }
         addMenuModel.editType = type
     }
-
     //选中上级的数据
     const select = (node: SelectNode) => {
-        console.log('父组件取到', node)
         addMenuModel.parentId = node.id
         addMenuModel.parentName = node.name
     }
-
     return {
         confirm, show, addMenuForm, addMenuModel, rules, select
     }

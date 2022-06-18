@@ -30,7 +30,7 @@ export default defineConfig({
         target: 'https://www.fastmock.site/mock/173d1aaad5f7b1d2b4ac739cdfd40877/ele',
         changeOrigin: true,
         ws: true,
-        // rewrite: (path)=>path.replace(/^\/api/, ''),
+        rewrite: (path) => path.replace(/^\/api/, ''),
       }
     }
   },

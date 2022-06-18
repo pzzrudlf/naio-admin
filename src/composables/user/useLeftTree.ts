@@ -27,6 +27,7 @@ export default function useLeftTree(emit){
          selectNode.name = data.name
          emit('treeClick', data.id)
      }
+     
      //获取树的数据
      const getTreeData = async () => {
          let res = await getLeftTreeApi()
@@ -52,6 +53,7 @@ export default function useLeftTree(emit){
              parentTree.value.store.nodesMap[data.id].expanded = !data.open
          }
      }
+
      return {
          treeData,
          defaultProps,

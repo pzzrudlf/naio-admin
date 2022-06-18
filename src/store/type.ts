@@ -20,6 +20,7 @@ export interface ITabState {
     collapse: boolean;
     tabList: Array<ITab>;
 }
+
 export interface ICollapseState {
     count: number;
     collapse: boolean;

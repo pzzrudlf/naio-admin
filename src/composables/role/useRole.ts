@@ -17,9 +17,11 @@ export default function useRole(getRoleList: any) {
     const addBtn = () => {
         addRoleRef.value?.show(EditType.ADD)
     }
+
     const editBtn = (row: AddAndEditRoleModel) => {
         addRoleRef.value?.show(EditType.EDIT, row)
     }
+    
     const deleteBtn = async (id: number | string) => {
         let param = {
             id: id

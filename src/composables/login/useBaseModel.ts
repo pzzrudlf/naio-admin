@@ -3,16 +3,13 @@ import { ElForm } from 'element-plus'
 import { LoginParam } from '@/api/user/userModel'
 import { validatePassword } from '@/utils/validator'
 
-export default function useBaseLogin(){
-    //登录表单ref
+export default function useBaseModel(){
     const formRef = ref<InstanceType<typeof ElForm>>()
-    //表单绑定的数据域
     const loginModel = reactive<LoginParam>({
         username:'admin',
         password:'1234',
         code: ''
     })
-    //表单验证规则
     const loginRules = reactive({
         username:[{
             required:true,

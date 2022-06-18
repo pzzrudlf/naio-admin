@@ -44,7 +44,7 @@ export default function useMenu(getMenuTable: any) {
             getMenuTable()
         }
     }
-
+    
     return {
         addBtn, editBtn, deleteBtn, save, addMenuRef
     }

@@ -6,7 +6,6 @@ import { LoginParam } from '@/api/user/userModel'
 export default function useLogin(loginModel: LoginParam) {
     const userStore = useUserStore()
     const { proxy } = getCurrentInstance() as any
-    //登录提交
     const login = () => {
         proxy.$refs.formRef.validate(async (valid: boolean) => {
             if (valid) {
