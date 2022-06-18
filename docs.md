@@ -26,8 +26,8 @@
 ```js
 1、掌握Vue3.2语法糖的使用
 2、掌握Vue3中组合api的使用
-3、掌握组件中业务逻辑抽离的方法；
-4、掌握TypeScript在Vue3中的使用；
+3、掌握组件中业务逻辑抽离的方法
+4、掌握TypeScript在Vue3中的使用
 5、掌握动态菜单、动态路由、按钮权限的实现方式
 6、vue3中全局挂载使用方式
 7、vue3父子组件的使用
@@ -55,9 +55,6 @@ node -v  //查看版本号
 ```js
 npm init vite@latest
 
-OR
-
-yarn create vite
 ```
 
 ##### 2、 Project name填写项目名称
@@ -181,7 +178,7 @@ export default router
   <router-view/>
 </template>
 
-<style lang="scss">
+<style lang="less">
 </style>
 
 ```
@@ -194,105 +191,34 @@ createApp(App).use(router).mount('#app')
 ```
 
 
-
-
-
-#### 第04讲、安装Vuex
-
-**官网**
-
-```js
-https://vuex.vuejs.org/zh/
-```
-
-
+#### 第04讲、安装Pinia
 
 ##### 1、安装依赖
 
 ```js
-npm install vuex@next --save 
+npm install pinia --save 
 
-OR
-
-yarn add vuex@next --save
 ```
-
-![](D:\项目实战\Vue3+TypeScript+Element-Plus项目实战\资料\images\2-1.png)
 
 ##### 2、在src下新建store目录，然后新建index.ts文件
 
 ```js
-import { InjectionKey } from 'vue'
-import { createStore, useStore as baseUseStore, Store } from 'vuex'
+import { createPinia } from 'pinia'
 
-export interface State {
-  count: number
-}
+const store = createPinia()
 
-export const key: InjectionKey<Store<State>> = Symbol()
-
-export const store = createStore<State>({
-  state: {
-    count: 0
-  },
-  mutations:{
-    setCount(state:State,count:number){
-      state.count = count
-    }
-  },
-  getters:{
-    getCount(state:State){
-      return state.count
-    }
-  }
-})
-
-// 定义自己的 `useStore` 组合式函数
-export function useStore () {
-  return baseUseStore(key)
-}
-
+export default store 
 ```
 
 ##### 3、main.ts中使用
 
 ```js
-import { store, key } from './store'
-createApp(App).use(store, key).use(router).mount('#app')
-```
-
-##### 4、修改HelloWorld.vue组件为如下
-
-```js
-<script setup lang="ts">
-import { ref,computed } from 'vue'
-import { useStore } from '../store';
-const store = useStore();
-const count = ref(0);
-const showcount = computed(()=>{
-  return store.getters['getCount']
-});
-
-const addBtn = ()=>{
-  store.commit('setCount',++count.value)
-}
-</script>
-
-<template>
-
-  <p>{{ showcount }}</p>
-  <button @click="addBtn">增加</button>
-</template>
-
-<style scoped>
-
-</style>
-
+import store from './store/index'
+createApp(App).use(store).use(router).mount('#app')
 ```
 
 
-
-#### 第05讲 eslint、css 预处理器sass安装
+#### 第05讲 eslint、css 预处理器less安装
 
 ##### 1、ts使用@符号引入
 
@@ -371,9 +297,6 @@ npm install -D less less-loader
 ```
 
 
-
-
-
 #### 第06讲  项目中引入element-plus
 
 ##### 1、element-plus官网
@@ -385,7 +308,7 @@ https://element-plus.gitee.io/zh-CN/guide/installation.html
 ##### 2、安装element-plus
 
 ```js
- npm install element-plus @element-plus/icons-vue --save
+ npm install element-plus --save
 ```
 
 ##### 3、main.ts中引入
@@ -393,37 +316,13 @@ https://element-plus.gitee.io/zh-CN/guide/installation.html
 ```js
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
-import store from './store'
+import router from './router/index'
+import store from './store/index'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 createApp(App).use(store).use(router).use(ElementPlus).mount('#app')
 
 ```
-
-##### 4、测试
-
-在views目录的Home.vue页面加入一个按钮
-
-```js
-<template>
-  <div class="home">
-    <el-button type="primary" size="default" icon='el-icon-plus'>新增</el-button>
-  </div>
-</template>
-<script lang="ts">
-import { defineComponent } from 'vue';
-export default defineComponent({
-  name: 'Home',
-  components: {
-    
-  },
-});
-</script>
-
-```
-
-##### 5、出现如下所示，说明element-plus引入成功
 
 
 #### 第07讲  主界面布局
@@ -435,8 +334,6 @@ export default defineComponent({
 2、安装Vue Language Features (Volar)
 3、安装Element UI Snippets
 ```
-
-
 
 ##### 1、找到index.html添加如下样式,设置高度
 
@@ -594,18 +491,18 @@ script setup 已经由实验状态正式毕业，现提供稳定版本
 
 ```js
 <script lang="ts">
-import { ref, defineComponent } from "vue";
+import { ref, defineComponent } from 'vue'
 export default defineComponent({
   name: "HelloWorld",
   props: {
     msg: {
       type: String,
       required: true,
-    },
+    }
   },
   setup: () => {
-    const count = ref(0);
-    return { count };
+    const count = ref(0)
+    return { count }
   },
 });
 </script>
@@ -613,19 +510,16 @@ export default defineComponent({
 
 ```js
 <script lang="ts" setup>
-import { ref, defineProps } from "vue";
-const count = ref(0);
+import { ref, defineProps } from 'vue'
+const count = ref(0)
 const props = defineProps({
   msg: {
     type: String,
     required: true,
-  },
-});
+  }
+})
 </script>
 ```
-
-
-
 
 
 ##### 1、抽离头部组件
@@ -647,8 +541,8 @@ const props = defineProps({
     </el-container>
 </template>
 <script setup lang="ts">
-import MenuBar from './menu/MenuBar.vue';
-import Header from './header/Header.vue';
+import MenuBar from './menu/MenuBar.vue'
+import Header from './header/Header.vue'
 </script>
 <style lang="less" scoped>
 .layout {
@@ -715,9 +609,9 @@ import Header from './header/Header.vue';
     </el-menu>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 //控制菜单展开和关闭
-const isCollapse = ref(false);
+const isCollapse = ref(false)
 </script>
 <style scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
@@ -744,8 +638,8 @@ const isCollapse = ref(false);
     </el-container>
 </template>
 <script setup lang="ts">
-import MenuBar from './menu/MenuBar.vue';
-import Header from './header/Header.vue';
+import MenuBar from './menu/MenuBar.vue'
+import Header from './header/Header.vue'
 </script>
 <style lang="less" scoped>
 .layout {
@@ -765,7 +659,6 @@ import Header from './header/Header.vue';
 ```
 
 
-
 #### 第09讲 左侧导航菜单制作讲解2
 
 ##### 1、前置知识
@@ -782,24 +675,21 @@ import Header from './header/Header.vue';
 
 ```js
 <template>
-  <template v-for="menu in menuList" :key="menu.path">
+  <template v-for="menu in menuList" v-bind:key="menu.path">
     <el-sub-menu
       v-if="menu.children && menu.children.length > 0"
-      :index="menu.path"
-      :key="menu.path"
+      v-bind:index="menu.path"
+      v-bind:key="menu.path"
     >
-      <template #title>
-        <i :class="menu.meta.icon"></i>
+      <template v-slot:title>
+        <i v-bind:class="menu.meta.icon"></i>
         <span>{{ menu.meta.title }}</span>
       </template>
-      <menu-item :menuList="menu.children"></menu-item>
+      <MenuItem :menuList="menu.children" />
     </el-sub-menu>
-    <el-menu-item
-    style="color: #f4f4f5"
-      v-else
-      :index="menu.path">
-      <i :class="menu.meta.icon"></i>
-      <template #title>{{ menu.meta.title }}</template>
+    <el-menu-item v-else style="color: #f4f4f5" v-bind:index="menu.path">
+      <i v-bind:class="menu.meta.icon" ></i>
+      <template v-slot:title>{{ menu.meta.title }}</template>
     </el-menu-item>
   </template>
 </template>
@@ -810,7 +700,6 @@ import {defineProps} from 'vue'
 defineProps(['menuList'])
 </script>
 ```
-
 
 
 ##### 3、修改MenuBar.vue组件为如下
@@ -830,12 +719,12 @@ defineProps(['menuList'])
         background-color="#304156"
         unique-opened
     >
-        <MenuItem :menuList='menuList'></MenuItem>
+        <MenuItem v-bind:menuList='menuList' />
     </el-menu>
 </template>
 <script lang="ts" setup>
-import MenuItem from './MenuItem.vue';
-import { ref,reactive } from 'vue';
+import MenuItem from './MenuItem.vue'
+import { ref,reactive } from 'vue'
 //菜单数据
 let menuList = reactive([
     {
@@ -964,7 +853,7 @@ let menuList = reactive([
     },
 ]);
 //控制菜单展开和关闭
-const isCollapse = ref(false);
+const isCollapse = ref(false)
 </script>
 <style scoped>
 .el-menu-vertical-demo:not(.el-menu--collapse) {
@@ -999,9 +888,6 @@ const isCollapse = ref(false);
 }
 </style>
 ```
-
-
-
 
 
 #### 第10讲  导航菜单logo组件制作
@@ -1047,7 +933,6 @@ const isCollapse = ref(false);
 ```
 
 
-
 ##### 2、效果展示
 
 ##### 3、在menu目录下，新建MenuLogo.vue组件
@@ -1088,12 +973,11 @@ const isCollapse = ref(false);
 ```
 
 
-
 ##### 4、在MenuBar.vue组件中引入MenuLogo.vue组件，并使用
 
 ```js
 <template>
-    <MenuLogo></MenuLogo>
+    <MenuLogo />
     <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
@@ -1102,7 +986,7 @@ const isCollapse = ref(false);
         @close="handleClose"
         background-color="#304156"
     >
-        <MenuItem :menuList='menuList'></MenuItem>
+        <MenuItem v-bind:menuList='menuList' />
     </el-menu>
 </template>
 <script setup lang="ts">
@@ -1280,11 +1164,7 @@ const handleClose = (key: string | number, keyPath: string) => {
 ```
 
 
-
-
-
 #### 第11讲  Element Plus的Icon图标使用
-
 
 
 **vue3 setup语法糖文档地址**
@@ -1293,7 +1173,6 @@ const handleClose = (key: string | number, keyPath: string) => {
 1、https://v3.cn.vuejs.org/api/sfc-script-setup.html
 2、https://github.com/vuejs/rfcs/tree/master/active-rfcs
 ```
-
 
 
 **前置知识**
@@ -1311,7 +1190,6 @@ https://v3.cn.vuejs.org/api/sfc-script-setup.html#%E4%BD%BF%E7%94%A8%E7%BB%84%E4
 ```
 
 
-
 **<span style='color:#FF7670;'>官网提示</span>**
 
 ```js
@@ -1323,14 +1201,11 @@ Element Plus 团队正在将原有组件内的 Font Icon 向 SVG Icon 迁移，�
 ```
 
 
-
-
-
 ##### 1、Element Plus图标的基本使用
 
 ```js
 1、安装
-npm install @element-plus/icons-vue
+npm install @element-plus/icons-vue -S
 
 2、引入图标
 import { Fold } from '@element-plus/icons-vue'
@@ -1342,7 +1217,6 @@ import { Fold } from '@element-plus/icons-vue'
 ```
 
 
-
 ##### 2、动态生成菜单时使用Element Plus 图标
 
 ###### 2.1、在main.ts把图标注册为全局组件
@@ -1351,23 +1225,23 @@ import { Fold } from '@element-plus/icons-vue'
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router/index'
-import { store, key } from '@/store/index'
+import store from '@/store/index'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 // 统一导入el-icon图标
-import * as Icons from '@element-plus/icons'
+import * as ElementPlusIcons from '@element-plus/icons-vue'
 const app= createApp(App);
-app.use(router).use(store,key).use(ElementPlus).mount('#app')
+app.use(router).use(store).use(ElementPlus).mount('#app')
 // 方式一
-Object.keys(Icons).forEach((key) => {
-    app.component(key,Icons[key as keyof typeof Icons])
-});
+for (const [key, component] of Object.entries(ElementPlusIcons)) {
+    app.component(key, component)
+}
 方式二
 const Icon = (props: { icon: string }) => {
-    const { icon } = props;
-    return createVNode(Icons[icon as keyof typeof Icons]);
-};
-app.component('Icon', Icon);
+    const { icon } = props
+    return createVNode(ElementPlusIcons[icon as keyof typeof ElementPlusIcons])
+}
+app.component('Icon', Icon)
 ```
 
 **解决type 'string' can't be used to index type 'typeof  字符串不能做下标的错，在tsconfig.json的 compilerOptions 中添加如下配置**
@@ -1398,7 +1272,7 @@ icon: "Menu"
 <template>
     <template v-for="menu in menuList" :key="menu.path">
         <el-sub-menu v-if="menu.children && menu.children.length > 0" :index="menu.path">
-            <template #title>
+            <template v-slot:title>
                 <i v-if="menu.meta.icon && menu.meta.icon.includes('el-icon')" :class="menu.meta.icon"></i>
                 <!-- 动态组件的使用方法 -->
                 <!-- <component class="icons" v-else :is="menu.meta.icon" /> -->
@@ -1429,9 +1303,6 @@ defineProps(['menuList'])
 ```
 
 
-
-
-
 #### 第12讲 路由配置与页面创建
 
 **vue3 setup语法糖文档地址**
@@ -1441,7 +1312,6 @@ defineProps(['menuList'])
 2、https://github.com/vuejs/rfcs/tree/master/active-rfcs
 3、https://next.router.vuejs.org/
 ```
-
 
 
 **vue3基础代码模板快速生成配置**
@@ -1461,7 +1331,7 @@ defineProps(['menuList'])
 			"<script setup lang='ts'>",
 			"import { ref,reactive} from 'vue'",
 			"</script>",
-			"<style scoped lang='scss'>",
+			"<style scoped lang='less'>",
 			"</style>",
 		],
 		"description": "Log output to console"
@@ -1487,10 +1357,7 @@ const route = useRoute()    ->   this.$route
 ```
 
 
-
-
-
-##### 1、在router/index.js添加如下路由
+##### 1、在router/index.ts添加如下路由
 
 ```js
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
@@ -1642,12 +1509,12 @@ router: 是否启用 vue-router 模式。 启用该模式会在激活导航时�
 
 ```js
 import { ref, reactive,computed } from 'vue'
-import { useRoute } from 'vue-router';
-const route = useRoute();
+import { useRoute } from 'vue-router'
+const route = useRoute()
 //获取激活的菜单
 const activeIndex = computed(()=>{
-    const {path} = route;
-    return path;
+    const { path } = route
+    return path
 })
 ```
 
@@ -1655,7 +1522,7 @@ const activeIndex = computed(()=>{
 
 ```js
 <template>
-    <MenuLogo></MenuLogo>
+    <MenuLogo />
     <el-menu
         :default-active="activeIndex"
         class="el-menu-vertical-demo"
@@ -1666,20 +1533,20 @@ const activeIndex = computed(()=>{
         unique-opened
         router
     >
-        <MenuItem :menuList="menuList"></MenuItem>
+        <MenuItem :menuList="menuList" />
     </el-menu>
 </template>
 <script setup lang="ts">
 import { ref, reactive,computed } from 'vue'
-import { useRoute } from 'vue-router';
+import { useRoute } from 'vue-router'
 import MenuItem from './MenuItem.vue'
 import MenuLogo from '@/layout/menu/MenuLogo.vue'
 // setup语法糖中 定义的数据和方法，直接可以在模板中使用，无需要 return 
-const route = useRoute();
+const route = useRoute()
 //获取激活的菜单
 const activeIndex = computed(()=>{
-    const {path} = route;
-    return path;
+    const { path } = route
+    return path
 })
 //菜单数据
 let menuList = reactive([
@@ -1875,10 +1742,10 @@ https://next.vuex.vuejs.org/
 
 ```js
 1、安装
-npm install @element-plus/icons
+npm install @element-plus/icons-vue
 
 2、引入图标
-import { Fold } from '@element-plus/icons'
+import { Fold } from '@element-plus/icons-vue'
 
 3、使用方式
 <el-icon>
@@ -1895,15 +1762,15 @@ import { Fold } from '@element-plus/icons'
   </el-icon>
 </template>
 <script setup lang='ts'>
-import { Fold,Expand } from '@element-plus/icons'
-import { ref } from 'vue';
-const status = ref(true);
+import { Fold,Expand } from '@element-plus/icons-vue'
+import { ref } from 'vue'
+const status = ref(true)
 //搜索按钮切换事件
 const changeIcon = ()=>{
-  status.value = !status.value;
+  status.value = !status.value
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang='less'>
 .icons{
   display: flex;
   align-items: center;
@@ -1919,15 +1786,12 @@ const changeIcon = ()=>{
 ```js
 <template>
 <div>
-    <Collapse></Collapse>
+    <Collapse />
 </div>
 </template>
 <script setup lang="ts">
-import Collapse from './Collapse.vue';
+import Collapse from './Collapse.vue'
 </script>
-<style scoped>
-
-</style>
 ```
 
 
@@ -2244,7 +2108,7 @@ const changeIcon = ()=>{
   store.commit('setCollopse',!status.value)
 }
 </script>
-<style scoped lang='scss'>
+<style scoped lang='less'>
 .icons{
   display: flex;
   align-items: center;
@@ -2299,26 +2163,26 @@ const changeIcon = ()=>{
     </el-breadcrumb>
 </template>
 <script setup lang='ts'>
-import { ref, watch, Ref } from 'vue';
-import { useRoute, RouteLocationMatched } from 'vue-router';
+import { ref, watch, Ref } from 'vue'
+import { useRoute, RouteLocationMatched } from 'vue-router'
 //面包屑数据
-const tabs: Ref<RouteLocationMatched[]> = ref([]);
+const tabs: Ref<RouteLocationMatched[]> = ref([])
 //获取当前路由
-const route = useRoute();
+const route = useRoute()
 const getBredcrumb = () => {
     //从路由里面获取所有有meta和title
-    let mached = route.matched.filter(item => item.meta && item.meta.title);
+    let mached = route.matched.filter(item => item.meta && item.meta.title)
     //判断第一个是否是首页,不是，构造一个
-    const first = mached[0];
+    const first = mached[0]
     if (first.path !== '/dashboard') {
-        mached = [{ path: '/dashboard', meta: { title: '首页' } } as any].concat(mached);
+        mached = [{ path: '/dashboard', meta: { title: '首页' } } as any].concat(mached)
     }
-    tabs.value = mached;
+    tabs.value = mached
 }
-getBredcrumb();
+getBredcrumb()
 watch(() => route.path, () => getBredcrumb())
 </script>
-<style scoped lang='scss'>
+<style scoped lang='less'>
 </style>
 ```
 
@@ -2326,17 +2190,14 @@ watch(() => route.path, () => getBredcrumb())
 
 ```js
 <template>
- <Collapse></Collapse>
- <BredCum></BredCum>
+ <Collapse />
+ <BredCum />
 </template>
 <script setup lang="ts">
-import Collapse from './Collapse.vue';
-import BredCum from './BredCum.vue';
+import Collapse from './Collapse.vue'
+import BredCum from './BredCum.vue'
 </script>
 ```
-
-
-
 
 
 #### 第15讲 tabs选项卡制作
@@ -2346,12 +2207,12 @@ import BredCum from './BredCum.vue';
 **前置知识**
 
 ```js
-1、vuex在组合API中的使用;
-	const store = useStore();
+1、vuex在组合API中的使用
+	const store = useStore()
 
-2、vue-router在组合API中的使用；
-	const route = useRoute();
-	const router = useRouter();
+2、vue-router在组合API中的使用
+	const route = useRoute()
+	const router = useRouter()
 
 3、响应式数据的定义； ref 、reactive
 
@@ -2388,42 +2249,42 @@ import BredCum from './BredCum.vue';
 </template>
 <script setup lang='ts'>
 import { computed, watch, onMounted, ref } from 'vue'
-import { useRoute,useRouter } from 'vue-router';
-import { useStore } from '@/store';
-import { ITab } from '@/store/type/Index';
-const route = useRoute();
-const router = useRouter();
-const store = useStore();
+import { useRoute,useRouter } from 'vue-router'
+import { useStore } from '@/store/index'
+import { ITab } from '@/store/type/Index'
+const route = useRoute()
+const router = useRouter()
+const store = useStore()
 //激活的选项卡
-const activeTab = ref('');
+const activeTab = ref('')
 //获取选项卡数据
 const tabsList = computed(() => {
   return store.getters['getTabsList']
 })
 //添加选项卡
 const addTabe = () => {
-  const { path, meta } = route;
+  const { path, meta } = route
   const tab: ITab = {
     title: meta.title as string,
     path: path
   }
-  store.commit('addTabs', tab);
+  store.commit('addTabs', tab)
 }
 //设置激活的选项卡
 const setActive = () => {
-  activeTab.value = route.path;
+  activeTab.value = route.path
 }
 //选项卡点击事件
-const  tabClick =(tab:any)=> {
-  const {props} = tab;
+const  tabClick =(tab: any)=> {
+  const {props} = tab
   console.log(props)
   router.push({path:props.name})
 }
 //关闭选项卡
 const removeTab = (targetName: string) => {
-  if (targetName === '/dashboard') return;
-  const tabs = tabsList.value;
-  let activeName = activeTab.value;
+  if (targetName === '/dashboard') return
+  const tabs = tabsList.value
+  let activeName = activeTab.value
   if (activeName === targetName) {
     console.log(activeName)
     console.log(targetName)
@@ -2438,34 +2299,34 @@ const removeTab = (targetName: string) => {
     })
   }
   activeTab.value = activeName
-  store.state.tabsList = tabs.filter((tab: ITab) => tab.path !== targetName);
+  store.state.tabsList = tabs.filter((tab: ITab) => tab.path !== targetName)
   router.push({path:activeName})
 }
 //解决刷新数据丢失问题
 const beforeUnload = () => {
   window.addEventListener("beforeunload", () => {
     console.log('刷新了')
-    sessionStorage.setItem("tabViews", JSON.stringify(tabsList.value));
+    sessionStorage.setItem("tabViews", JSON.stringify(tabsList.value))
   })
-  let tabSession = sessionStorage.getItem("tabViews");
+  let tabSession = sessionStorage.getItem("tabViews")
   if (tabSession) {
-    let oldViews = JSON.parse(tabSession);
+    let oldViews = JSON.parse(tabSession)
     if (oldViews.length > 0) {
-      store.state.tabsList = oldViews;
+      store.state.tabsList = oldViews
     }
   }
 }
 onMounted(() => {
-  beforeUnload();
-  setActive();
-  addTabe();
+  beforeUnload()
+  setActive()
+  addTabe()
 })
 watch(() => route.path, () => {
-  setActive();
-  addTabe();
+  setActive()
+  addTabe()
 })
 </script>
-<style scoped lang='scss'>
+<style scoped lang='less'>
 :deep(.el-tabs__header) {
   margin: 0px;
 }
@@ -2501,8 +2362,8 @@ watch(() => route.path, () => {
 
 ```js
 export interface ITab {
-    title: string,
-    path: string
+    title: string;
+    path: string;
 }
 ```
 
