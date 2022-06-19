@@ -1,12 +1,12 @@
 # naio-admin
 
-一个多规格的电商管理系统
+一个多规格的电商管理系统: 管理页面
 
-- gin
-- mysql
-- gorm
-- redis
-- casbin
+- Vue3
+- Typescript
+- Pinia
+- Element-Plus
+- Less
 
 功能点
 - 权限管理
