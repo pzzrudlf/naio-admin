@@ -34,7 +34,7 @@ const tabClick = (tab: any) => {
   router.push({ path: props.name })
 }
 const removeTab = (targetName: string) => {
-  if (targetName === '/dashboard') return;
+  if (targetName === '/dashboard') return
   const tabs = tabList.value
   let activeName = activeTab.value
   if (activeName === targetName) {

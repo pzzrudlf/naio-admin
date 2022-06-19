@@ -1,7 +1,7 @@
 import qs from 'qs'
 import { ElMessage } from 'element-plus'
 import { getToken } from '@/utils/auth'
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosPromise, AxiosResponse } from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 
 export interface Result<T = any> {
     code: number;

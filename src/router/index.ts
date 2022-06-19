@@ -1,5 +1,5 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
-import Layout from '../layout/Index.vue'
+import Layout from '@/layout/Index.vue'
 
 export const constantRoutes: Array<RouteRecordRaw> = [
     {
@@ -21,7 +21,7 @@ export const constantRoutes: Array<RouteRecordRaw> = [
     {
         path: '/login',
         name: 'login',
-        component: () => import('../views/login/Index.vue')
+        component: () => import('@/views/login/Index.vue')
     }
 ]
 const router = createRouter({

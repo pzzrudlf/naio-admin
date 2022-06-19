@@ -32,7 +32,7 @@ const loginOutBtn = async () => {
             //清空session
             cleanSession()
             //跳到登录
-            window.location.href = "/"
+            window.location.href = '/'
         }
     }
 }
