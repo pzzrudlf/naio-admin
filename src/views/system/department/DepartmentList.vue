@@ -29,9 +29,9 @@
 </template>
 <script setup lang='ts'>
 import { Edit, Close, Plus, Search } from '@element-plus/icons-vue'
-import useBaseModel from '@/composables/department/useBaseModel'
-import useDeptTable from '@/composables/department/useDeptTable'
-import useDept from '@/composables/department/useDept'
+import useBaseModel from '@/composables/dept/useBaseModel'
+import useDeptTable from '@/composables/dept/useDeptTable'
+import useDept from '@/composables/dept/useDept'
 import AddAndEdit from './AddAndEdit.vue'
 // 基础数据
 const { rules } = useBaseModel()

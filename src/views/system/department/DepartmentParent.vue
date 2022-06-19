@@ -11,7 +11,7 @@
 <script setup lang='ts'>
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
-import useDeptParent from '@/composables/department/useDeptParent'
+import useDeptParent from '@/composables/dept/useDeptParent'
 
 const { dialog, onClose, onShow } = useDialog()
 
@@ -25,11 +25,9 @@ const confirm = () => {
 const show = async () => {
   //
   await getTreeData()
-  //
   dialog.title = '选择上级部门'
   dialog.height = 420
   dialog.width = 300
-  //
   onShow()
 }
 

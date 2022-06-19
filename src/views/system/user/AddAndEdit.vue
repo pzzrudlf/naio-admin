@@ -61,12 +61,12 @@
   <DepartmentParent ref="parentRef" @select="select" />
 </template>
 <script setup lang='ts'>
-import DepartmentParent from '../department/DepartmentParent.vue'
+import DepartmentParent from '../dept/DepartmentParent.vue'
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
 import useAddAndEditUser from '@/composables/user/useAddAndEditUser'
 import useBaseModel from '@/composables/user/useBaseModel'
-import useSelectParent from '@/composables/department/useSelectParent'
+import useSelectParent from '@/composables/dept/useSelectParent'
 
 //基础属性
 const { addModel, rules } = useBaseModel()
