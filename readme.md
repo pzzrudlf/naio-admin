@@ -1,11 +1,1 @@
-```javascript
-node@14|16|18
-vue@3.2  
-vue-router@4.0 
-pinia@2.0  
-element-plus@2.1  
-axios@0.26  
-vite@2.9  
-typescript@4.6  
-less@4.1
-```
+后台页面
