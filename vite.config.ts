@@ -25,7 +25,7 @@ export default defineConfig({
     port: 8080,
     open: true,
     hmr: true,
-    proxy: {
+    // proxy: {
       // add proxy to fix cors
       // '/api': 'http://localhost:8088'
       // '/api': {
@@ -34,7 +34,7 @@ export default defineConfig({
       //   ws: true,
       //   rewrite: (path) => path.replace(/^\/api/, ''),
       // }
-    }
+    // }
   },
   resolve: {
     alias: {
