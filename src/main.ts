@@ -45,6 +45,10 @@ app.component('Icon', Icon)
 // for (const [key, component] of Object.entries(ElementPlusIcons)) {
 //     app.component(key, component)
 // }
+
+//引入windicss
+import 'virtual:windi.css'
+
 app.mount('#app')
 //权限验证
 const whiteList = ['/login']

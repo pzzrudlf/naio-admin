@@ -1,8 +1,21 @@
 <template>
     <FormDrawer :title="drawer.title" :visible="drawer.visible" :size="drawer.size" :destory-on-close="drawer.destoryOnClose"
         @onClose='onClose' @onConfirm='onConfirm'>
-        <template v-slot:content="{ item }">
-            弹框内容 {{ item }}
+        <template v-slot>
+            <div style="height: 1000px;">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure veniam, qui accusantium ea sunt consequatur architecto fugit at rem sequi exercitationem doloribus id ex eligendi delectus, enim ullam beatae nihil.
+            </div>
         </template>
     </FormDrawer>
 </template>

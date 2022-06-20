@@ -14,7 +14,6 @@ export const useTabStore = defineStore({
         getCount(): number {
             return this.count
         },
-        //获取collapse
         getCollapse(): boolean {
             return this.collapse
         },

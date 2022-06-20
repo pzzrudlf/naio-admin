@@ -52,7 +52,6 @@ import useImage from '@/composables/login/useImage'
 const { imgSrc, getImage } = useImage()
 // 数据源
 const { loginModel, loginRules, formRef } = useBaseModel()
-
 const { login } = useLogin(loginModel)
 
 </script>
