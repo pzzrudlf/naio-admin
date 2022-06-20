@@ -1,13 +1,13 @@
 import { Directive } from 'vue'
-import { useUserStore } from '@/store/user'
+import { useAdminStore } from '@/store/admin'
 
 export const permission: Directive = {
     mounted(el, binding) {
-        const userStore = useUserStore()
+        const adminStore = useAdminStore()
         // value按钮上的权限
         const { value } = binding
         // 获取用户所有的权限
-        const permissions = userStore.getPermissions
+        const permissions = adminStore.getPermissions
         if (value && value instanceof Array && value.length > 0) {
             const permissionRoles = value
             const hasPermission = permissions.some((role) => {

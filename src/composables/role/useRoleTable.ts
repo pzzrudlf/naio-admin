@@ -1,5 +1,5 @@
 import { onMounted, reactive } from 'vue'
-import { getUserId } from '@/utils/auth'
+import { getAdminId } from '@/utils/auth'
 import { getRoleListApi } from '@/api/role/role'
 import { RoleListParam } from '@/api/role/roleModel'
 
@@ -10,7 +10,7 @@ export default function useRoleTable() {
     })
     //表格查询参数
     const listParam = reactive<RoleListParam>({
-        userId: getUserId() || '',
+        userId: getAdminId() || '',
         currentPage: 1,
         pageSize: 10,
         name: '',

@@ -1,7 +1,7 @@
 import App from '@/App.vue'
 import store from '@/store/index'
 import router from '@/router/index'
-import { useUserStore } from '@/store/user'
+import { useAdminStore } from '@/store/admin'
 import { useMenuStore } from '@/store/menu'
 import { createApp, createVNode } from 'vue'
 import { getToken, cleanSession } from '@/utils/auth'
@@ -26,7 +26,6 @@ import resetForm from '@/utils/resetform'
 import objCopy from '@/utils/objcopy'
 import myconfirm from '@/utils/myconfirm'
 
-import * as ElementPlusIcons from '@element-plus/icons-vue'
 import 'element-plus/theme-chalk/el-loading.css'
 import 'element-plus/theme-chalk/el-message-box.css'
 import 'element-plus/theme-chalk/el-message.css'
@@ -37,36 +36,32 @@ app.config.globalProperties.$objCopy = objCopy
 app.config.globalProperties.$myconfirm = myconfirm
 app.config.globalProperties.$message = ElMessage
 // //Icon全局组件
+import * as ElementPlusIcons from '@element-plus/icons-vue'
 const Icon = (props: { icon: string }) => {
     const { icon } = props
     return createVNode(ElementPlusIcons[icon as keyof typeof ElementPlusIcons])
 };
 app.component('Icon', Icon)
-// for (const [key, component] of Object.entries(ElementPlusIcons)) {
-//     app.component(key, component)
-// }
-
 //引入windicss
 import 'virtual:windi.css'
-
 app.mount('#app')
 //权限验证
 const whiteList = ['/login']
 router.beforeEach(async (to, from, next) => {
     //必须放beforeEach中
-    const userStore = useUserStore()
+    const adminStore = useAdminStore()
     const menuStore = useMenuStore()
     let token = getToken()
     if (token) { //token存在
         if (to.path === '/login' || to.path === '/') {
             next({ path: '/' })
         } else {
-            let hasRoles = userStore.$state.permissions && userStore.$state.permissions.length > 0
+            let hasRoles = adminStore.$state.permissions && adminStore.$state.permissions.length > 0
             if (hasRoles) {
                 next()
             } else {
                 try {
-                    await userStore.getInfo()
+                    await adminStore.getInfo()
                     await menuStore.getMenuListActions(router)
                     //确保动态添加的路由已经被完全加载上去
                     next({ ...to, replace: true })

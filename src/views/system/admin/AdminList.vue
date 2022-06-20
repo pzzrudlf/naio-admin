@@ -1,9 +1,8 @@
 <template>
     <el-container :style="{ height: containerHeight + 'px' }">
-        <el-aside width="200px" style="border-right: 1px solid #dfe6ec">
-            <!-- Aside content -->
+        <!-- <el-aside width="200px" style="border-right: 1px solid #dfe6ec">
             <LeftTree ref="userLeftTree" @treeClick="treeClick"></LeftTree>
-        </el-aside>
+        </el-aside> -->
         <el-main>
             <!-- 搜索栏 -->
             <el-form :model="listParam" label-width="80px" :inline="true" size="small">
@@ -46,17 +45,17 @@
 </template>
 <script setup lang='ts'>
 import { Search, Setting, Close, Plus, Delete, Edit } from '@element-plus/icons-vue'
-import useUserTable from '@/composables/user/useUserTable'
-import useUser from '@/composables/user/useUser'
-import LeftTree from './LeftTree.vue'
+import useAdminTable from '@/composables/admin/useAdminTable'
+import useAdmin from '@/composables/admin/useAdmin'
+// import LeftTree from './LeftTree.vue'
 import { ref, onMounted, nextTick } from 'vue'
 import AddAndEdit from './AddAndEdit.vue'
 import AssignRole from './AssignRole.vue'
 
 const containerHeight = ref(0)
 const tableHeight = ref(0)
-const { listParam, tableData, treeClick, sizeChange, currentChange, getUserList, searchBtn, resetBtn } = useUserTable()
-const { addBtn, editBtn, deleteBtn, assignBtn, userAddRef, save, assignRoleRef } = useUser(getUserList)
+const { listParam, tableData, treeClick, sizeChange, currentChange, getAdminList, searchBtn, resetBtn } = useAdminTable()
+const { addBtn, editBtn, deleteBtn, assignBtn, adminAddRef, save, assignRoleRef } = useAdmin(getAdminList)
 
 onMounted(() => {
     nextTick(() => {

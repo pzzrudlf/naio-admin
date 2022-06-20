@@ -25,17 +25,16 @@
                     </template>
                 </el-input>
             </el-form-item>
-            <el-form-item prop='code'>
+            <!-- <el-form-item prop='code'>
                 <el-row :gutter="20">
                     <el-col :span="16">
                         <el-input placeholder="请输入验证码" v-model="loginModel.code"></el-input>
                     </el-col>
                     <el-col :span="8">
-                        <!-- <el-input placeholder="请输入验证码" v-model="loginModel.code"></el-input> -->
                         <img :src='imgSrc' @click="getImage" />
                     </el-col>
                 </el-row>
-            </el-form-item>
+            </el-form-item> -->
             <!-- 登录按钮 -->
             <el-button type="primary" style="width: 100%;margin-bottom: 30px" @click="login">登录</el-button>
         </el-form>
@@ -46,10 +45,7 @@
 import { User, Lock } from '@element-plus/icons-vue'
 import useBaseModel from '@/composables/login/useBaseModel'
 import useLogin from '@/composables/login/useLogin'
-import useImage from '@/composables/login/useImage'
 
-// 验证码
-const { imgSrc, getImage } = useImage()
 // 数据源
 const { loginModel, loginRules, formRef } = useBaseModel()
 const { login } = useLogin(loginModel)

@@ -22,7 +22,7 @@
 <script setup lang='ts'>
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
-import useAssignRole from '@/composables/user/useAssignRole'
+import useAssignRole from '@/composables/admin/useAssignRole'
 
 //弹框属性
 const { dialog, onClose, onShow } = useDialog()

@@ -31,7 +31,7 @@
 </template>
 <script setup lang='ts'>
 import { DocumentRemove, Plus, Minus } from '@element-plus/icons-vue'
-import useLeftTree from '@/composables/user/useLeftTree'
+import useLeftTree from '@/composables/admin/useLeftTree'
 
 //注册事件
 const emit = defineEmits(['treeClick'])

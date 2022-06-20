@@ -1,9 +1,9 @@
 import { ref, reactive, onMounted, nextTick } from 'vue'
-import { getUserId } from '@/utils/auth'
+import { getAdminId } from '@/utils/auth'
 import useInstance from '@/hooks/useInstance'
 import { DialogModel } from '@/utils/baseType'
-import { AssignRoleListParam } from '@/api/user/userModel'
-import { getRoleListApi, getRoleIdApi, assingRoleSaveApi } from '@/api/user/user'
+import { AssignRoleListParam } from '@/api/admin/adminModel'
+import { getRoleListApi, getRoleIdApi, assingRoleSaveApi } from '@/api/admin/admin'
 
 export default function useAssignRole(dialog: DialogModel, onClose, onShow) {
 
@@ -52,7 +52,7 @@ export default function useAssignRole(dialog: DialogModel, onClose, onShow) {
     const param = reactive<AssignRoleListParam>({
         currentPage: 1,
         pageSize: 4,
-        userId: getUserId() || '',
+        userId: getAdminId() || '',
         total: 0
     })
     //角色列表数据

@@ -1,13 +1,13 @@
 export const enum Type {
-    USER = 'userStore',
+    ADMIN = 'adminStore',
     TAB = 'tabStore',
     COLLAPSE = 'collapseStore',
     MENU = 'menuStore',
 }
 
-export interface IUserState {
+export interface IAdminState {
     token: string;
-    userId: string | number;
+    adminId: string | number;
     permissions: Array<string>;
 }
 

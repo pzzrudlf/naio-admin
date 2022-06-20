@@ -1,6 +1,6 @@
 enum Keys{
-    Token = 'token',
-    UserId = 'userId',
+    Token = 'Authorization',
+    AdminId = 'adminId',
     ExpireTime = 'expireTime',
 }
 //存储token到session
@@ -11,11 +11,11 @@ export const getToken = ()=>{
     return sessionStorage.getItem(Keys.Token)
 }
 //存储userId到sessionStorage
-export const setUserId = (userId:number)=>{
-    sessionStorage.setItem(Keys.UserId,JSON.stringify(userId))
+export const setAdminId = (adminId:number)=>{
+    sessionStorage.setItem(Keys.AdminId,JSON.stringify(adminId))
 }
-export const getUserId = ()=>{
-    return sessionStorage.getItem(Keys.UserId)
+export const getAdminId = ()=>{
+    return sessionStorage.getItem(Keys.AdminId)
 }
 //存储过期时间
 export const setExpireTime = (time:number)=>{

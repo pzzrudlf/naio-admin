@@ -28,7 +28,7 @@ class request {
                 //把token添加到请求头部
                 config.headers = {
                     ...config.headers,
-                    token: token
+                    Authorization: 'Bearer ' + token
                 };
             }
             //这里可以设置头部token携带到后端进行token的验证

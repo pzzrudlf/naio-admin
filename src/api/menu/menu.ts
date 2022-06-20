@@ -2,7 +2,7 @@ import http from '@/http/http'
 import { AddAndEditMenuModel } from './menuModel'
 
 enum Api {
-    getMenuList = '/api/sysUser/getMenuList',
+    getMenuList = '/api/auth/menu',
     getTable = '/api/menu/list',
     getParent = '/api/menu/parent',
     add = '/api/menu',

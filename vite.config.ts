@@ -28,12 +28,12 @@ export default defineConfig({
     proxy: {
       // add proxy to fix cors
       // '/api': 'http://localhost:8088'
-      '/api': {
-        target: 'https://www.fastmock.site/mock/173d1aaad5f7b1d2b4ac739cdfd40877/ele',
-        changeOrigin: true,
-        ws: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      }
+      // '/api': {
+      //   target: 'http://localhost:8088',
+      //   changeOrigin: true,
+      //   ws: true,
+      //   rewrite: (path) => path.replace(/^\/api/, ''),
+      // }
     }
   },
   resolve: {

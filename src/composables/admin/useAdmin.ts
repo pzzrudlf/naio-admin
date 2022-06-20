@@ -2,23 +2,23 @@ import { ref } from 'vue'
 import { Result } from '@/http/request'
 import { EditType } from '@/utils/baseEnum'
 import useInstance from '@/hooks/useInstance'
-import { AddAndEditUserModel } from '@/api/user/userModel'
-import { addUserApi, editUserApi, deleteUserApi } from '@/api/user/user'
+import { AddAndEditAdminModel } from '@/api/admin/adminModel'
+import { addAdminApi, editAdminApi, deleteAdminApi } from '@/api/admin/admin'
 
-export default function useUser(getUserList: any) {
+export default function useAdmin(getAdminList: any) {
 
     const { global } = useInstance()
 
     //分配角色组件的ref属性
     const assignRoleRef = ref<{ show: (name: string, userId: string | number) => void }>()
 
-    const userAddRef = ref<{ show: (type: string, row?: AddAndEditUserModel) => void }>()
+    const adminAddRef = ref<{ show: (type: string, row?: AddAndEditAdminModel) => void }>()
 
     const addBtn = () => {
-        userAddRef.value?.show(EditType.ADD)
+        adminAddRef.value?.show(EditType.ADD)
     }
-    const editBtn = (row: AddAndEditUserModel) => {
-        userAddRef.value?.show(EditType.EDIT, row)
+    const editBtn = (row: AddAndEditAdminModel) => {
+        adminAddRef.value?.show(EditType.EDIT, row)
     }
     const deleteBtn = async (id: number) => {
         let param = {
@@ -26,27 +26,27 @@ export default function useUser(getUserList: any) {
         }
         let confirm = await global.$myconfirm('确定删除该数据吗?')
         if (confirm) {
-            let res = await deleteUserApi(param)
+            let res = await deleteAdminApi(param)
             if (res && res.code == 200) {
                 global.$message({ message: res.msg, type: 'success' })
-                getUserList()
+                getAdminList()
             }
         }
     }
-    const assignBtn = (row: AddAndEditUserModel) => {
+    const assignBtn = (row: AddAndEditAdminModel) => {
         assignRoleRef.value?.show(row.loginName, row.id)
     }
 
-    const save = async (param: AddAndEditUserModel) => {
+    const save = async (param: AddAndEditAdminModel) => {
         let res: Result
         if (param.type == EditType.ADD) {
-            res = await addUserApi(param)
+            res = await addAdminApi(param)
         } else {
-            res = await editUserApi(param)
+            res = await editAdminApi(param)
         }
         if (res && res.code == 200) {
             //刷新列表
-            getUserList()
+            getAdminList()
             //信息提示
             global.$message({ message: res.msg, type: 'success' })
         }
@@ -58,7 +58,7 @@ export default function useUser(getUserList: any) {
         deleteBtn,
         assignBtn,
         save,
-        userAddRef,
+        adminAddRef,
         assignRoleRef
     }
 }

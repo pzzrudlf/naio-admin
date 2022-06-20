@@ -18,7 +18,7 @@
 </template>
 <script setup lang='ts'>
 import useInstance from '@/hooks/useInstance'
-import { loginOutApi } from '@/api/user/user'
+import { loginOutApi } from '@/api/admin/admin'
 import { getToken, cleanSession } from '@/utils/auth'
 import TestDrawer from '@/components/TestDrawer/TestDrawer.vue'
 import useDrawer from '@/composables/drawer/useDrawer'
@@ -32,7 +32,7 @@ const loginOutBtn = async () => {
     let confirm = await global.$myconfirm('确定退出登录吗？')
     if (confirm) {
         let parm = {
-            token: getToken()
+            Authorization: 'Bearer ' + getToken()
         }
         let res = await loginOutApi(parm)
         if (res && res.code == 200) {

@@ -1,5 +1,5 @@
 import { ref, onMounted } from 'vue'
-import { getImageApi } from '@/api/user/user'
+import { getImageApi } from '@/api/admin/admin'
 
 export default function useImage() {
     //定义图片src

@@ -4,7 +4,7 @@
 export interface LoginParam {
     username: string;
     password: string;
-    code: string;
+    // code: string;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface LoginResult {
     expireTime: number;
 }
 
-export interface UserInfo {
+export interface AdminInfo {
     avatar: string;
     id: string;
     introduction: string;
@@ -28,7 +28,7 @@ export interface UserInfo {
 /**
  * 用户列表查询参数
  */
-export interface UserListParam {
+export interface AdminListParam {
     deptId: string | number;
     loginName: string;
     currentPage: number;
@@ -39,7 +39,7 @@ export interface UserListParam {
 /**
  * 表单提交的参数
  */
-export interface AddAndEditUserModel {
+export interface AddAndEditAdminModel {
     type: string;//add or edit
     id: string | number;
     deptId: string | number;

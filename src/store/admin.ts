@@ -1,16 +1,16 @@
 import { defineStore } from 'pinia'
-import { loginApi, getInfoApi } from '@/api/user/user'
-import { Type, IUserState } from './type'
-import { LoginParam } from '@/api/user/userModel'
+import { loginApi, getInfoApi } from '@/api/admin/admin'
+import { Type, IAdminState } from './type'
+import { LoginParam } from '@/api/admin/adminModel'
 import { Result } from '@/http/request'
-import { setToken as baseSetToken, setUserId, setExpireTime, getToken } from '@/utils/auth'
+import { setToken as baseSetToken, setAdminId, setExpireTime, getToken } from '@/utils/auth'
 
-export const useUserStore = defineStore({
-    id: Type.USER,
-    state: (): IUserState => {
+export const useAdminStore = defineStore({
+    id: Type.ADMIN,
+    state: (): IAdminState => {
         return {
             token: getToken() || '',
-            userId: '',
+            adminId: '',
             permissions: []
         }
     },
@@ -28,21 +28,21 @@ export const useUserStore = defineStore({
         setToken(token: string) {
             this.$state.token = token
         },
-        setUserId(userId: string | number) {
-            this.$state.userId = userId
+        setAdminId(adminId: string | number) {
+            this.$state.adminId = adminId
         },
-        login(userinfo: LoginParam) {
+        login(admininfo: LoginParam) {
             return new Promise<Result>((resolve, reject) => {
-                loginApi(userinfo).then((res) => {
-                    if (res.data.code == 200) {
+                loginApi(admininfo).then((res) => {
+                    if (res.code == 200) {
                         // 设置到pinia中
-                        this.setToken(res.data.token)
-                        this.setUserId((res.data.id))
+                        this.setToken(res.token)
+                        this.setAdminId((res.id))
 
                         //存储到sessionStorage
-                        baseSetToken(res.data.token)
-                        setUserId(res.data.id)
-                        setExpireTime(res.data.expireTime)
+                        baseSetToken(res.token)
+                        setAdminId(res.id)
+                        setExpireTime(res.expireTime)
                     }
                     resolve(res)
                 }).catch((err) => {
@@ -58,7 +58,7 @@ export const useUserStore = defineStore({
                     if (res.code == 200) {
                         this.setRoles(res.data.roles)
                     }
-                    resolve(res.data)
+                    resolve(res)
                 }).catch((error) => {
                     reject(error)
                 })

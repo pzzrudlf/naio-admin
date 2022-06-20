@@ -3,10 +3,10 @@
         <Collapse />
         <BredCurm />
     </div>
-    <UserInfo />
+    <Info />
 </template>
 <script setup lang='ts'>
 import Collapse from './Collapse.vue'
 import BredCurm from './BredCurm.vue'
-import UserInfo from './UserInfo.vue'
+import Info from './Info.vue'
 </script>

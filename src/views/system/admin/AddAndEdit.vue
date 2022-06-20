@@ -2,7 +2,7 @@
   <SysDialog :title="dialog.title" :width="dialog.width" :height="dialog.height" :visible="dialog.visible"
     @onClose="onClose" @onConfirm="confirm">
     <template v-slot:content>
-      <el-form :model="addModel" ref="addUserForm" :rules="rules" label-width="80px" :inline="false" size="small">
+      <el-form :model="addModel" ref="addAdminForm" :rules="rules" label-width="80px" :inline="false" size="small">
         <el-row :gutter="20">
           <el-col :span="12" :offset="0">
             <el-form-item prop="deptName" label="所属部门">
@@ -61,11 +61,11 @@
   <DepartmentParent ref="parentRef" @select="select" />
 </template>
 <script setup lang='ts'>
-import DepartmentParent from '../dept/DepartmentParent.vue'
+import DepartmentParent from '../department/DepartmentParent.vue'
 import SysDialog from '@/components/SysDialog/SysDialog.vue'
 import useDialog from '@/hooks/useDialog'
-import useAddAndEditUser from '@/composables/user/useAddAndEditUser'
-import useBaseModel from '@/composables/user/useBaseModel'
+import useAddAndEditAdmin from '@/composables/admin/useAddAndEditAdmin'
+import useBaseModel from '@/composables/admin/useBaseModel'
 import useSelectParent from '@/composables/dept/useSelectParent'
 
 //基础属性
@@ -75,7 +75,7 @@ const { dialog, onShow, onClose } = useDialog()
 
 const emit = defineEmits(['save'])
 //新增、编辑弹框方法
-const { confirm, show, addUserForm, select } = useAddAndEditUser(dialog, onShow, onClose, addModel, emit)
+const { confirm, show, addAdminForm, select } = useAddAndEditAdmin(dialog, onShow, onClose, addModel, emit)
 //上级部门
 const { parentRef, selectParent } = useSelectParent()
 //暴露方法给外部使用

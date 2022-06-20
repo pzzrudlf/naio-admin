@@ -2,7 +2,7 @@ import { DialogModel } from '@/utils/baseType'
 import { assignTreeApi, assignSaveApi } from '@/api/role/role'
 import { AssignSaveParam, AssignTreeParam } from '@/api/role/roleModel'
 import { reactive, ref } from 'vue'
-import { getUserId } from '@/utils/auth'
+import { getAdminId } from '@/utils/auth'
 import { ElTree } from 'element-plus'
 import useInstance from '@/hooks/useInstance'
 
@@ -52,7 +52,7 @@ export default function useAssignMenu(dialog: DialogModel, onShow, onClose) {
         saveParam.roleId = roleId
         const param = {
             roleId: roleId,
-            userId: getUserId() || ''
+            userId: getAdminId() || ''
         }
         //查询权限树的数据
         getAssignTree(param)

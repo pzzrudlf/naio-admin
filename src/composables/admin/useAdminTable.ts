@@ -1,10 +1,10 @@
 import { reactive, onMounted } from 'vue'
-import { getUserListApi } from '@/api/user/user'
-import { UserListParam } from '@/api/user/userModel'
+import { getAdminListApi } from '@/api/admin/admin'
+import { AdminListParam } from '@/api/admin/adminModel'
 
-export default function useUserTable() {
+export default function useAdminTable() {
     //列表参数
-    const listParam = reactive<UserListParam>({
+    const listParam = reactive<AdminListParam>({
         deptId: '',
         currentPage: 1,
         pageSize: 10,
@@ -18,8 +18,8 @@ export default function useUserTable() {
     })
 
     //获取表格数据
-    const getUserList = async () => {
-        let res = await getUserListApi(listParam)
+    const getAdminList = async () => {
+        let res = await getAdminListApi(listParam)
         if (res && res.code == 200) {
             tableData.list = res.data.records
             listParam.total = res.data.total
@@ -31,38 +31,38 @@ export default function useUserTable() {
         //设置点击的部门id
         listParam.deptId = deptId
         //获取部门列表
-        getUserList()
+        getAdminList()
     }
 
     //页容量改变触发
     const sizeChange = (size: number) => {
         listParam.pageSize = size
-        getUserList()
+        getAdminList()
     }
 
     //页数改变触发
     const currentChange = (page: number) => {
         listParam.currentPage = page
-        getUserList()
+        getAdminList()
     }
 
     onMounted(() => {
-        getUserList()
+        getAdminList()
     })
 
     const searchBtn = ()=>{
-        getUserList()
+        getAdminList()
     }
 
     const resetBtn = ()=>{
         listParam.loginName = ''
-        getUserList()
+        getAdminList()
     }
     
     return {
         listParam,
         tableData,
-        getUserList,
+        getAdminList,
         treeClick,
         sizeChange,
         currentChange,

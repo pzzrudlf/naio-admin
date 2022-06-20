@@ -1,6 +1,6 @@
 import { ElTree } from 'element-plus'
 import { reactive, ref, onMounted, nextTick} from 'vue'
-import { getLeftTreeApi } from '@/api/user/user'
+import { getLeftTreeApi } from '@/api/admin/admin'
 import { DeptModel, SelectNode } from '@/api/dept/deptModel'
 
 export default function useLeftTree(emit){
