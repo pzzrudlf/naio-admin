@@ -7,16 +7,23 @@
             </span>
             <template #dropdown>
                 <el-dropdown-menu>
+                    <el-dropdown-item @click="showDrawer">Drawer</el-dropdown-item>
                     <el-dropdown-item @click="loginOutBtn">退出</el-dropdown-item>
                 </el-dropdown-menu>
             </template>
         </el-dropdown>
     </div>
+
+    <TestDrawer ref='drawerRef' />
 </template>
 <script setup lang='ts'>
 import useInstance from '@/hooks/useInstance'
 import { loginOutApi } from '@/api/user/user'
 import { getToken, cleanSession } from '@/utils/auth'
+import TestDrawer from '@/components/TestDrawer/TestDrawer.vue'
+import useDrawer from '@/composables/drawer/useDrawer'
+
+const { showDrawer, drawerRef } = useDrawer()
 
 const { global } = useInstance()
 
@@ -36,6 +43,7 @@ const loginOutBtn = async () => {
         }
     }
 }
+
 </script>
 <style lang='less' scoped>
 .header-right {
