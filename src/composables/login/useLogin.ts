@@ -1,6 +1,6 @@
 import { getCurrentInstance } from 'vue'
 import router from '@/router'
-import { useAdminStore } from '@/store/admin'
+import { useAdminStore } from '@/store/adminStore'
 import { LoginParam } from '@/api/admin/adminModel'
 
 export default function useLogin(loginModel: LoginParam) {
