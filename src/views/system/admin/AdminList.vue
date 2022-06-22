@@ -12,7 +12,7 @@
                 <el-form-item>
                     <el-button size="small" :icon="Search" @click="searchBtn">搜索</el-button>
                     <el-button size="small" :icon="Close" @click="resetBtn">重置</el-button>
-                    <el-button size="small" :icon="Plus" type="primary" v-permission="['sys:user:add']" @click="addBtn">新增</el-button>
+                    <el-button size="small" :icon="Plus" type="primary" @click="addBtn">新增</el-button>
                 </el-form-item>
             </el-form>
             <!-- 用户表格 -->
@@ -39,7 +39,7 @@
         </el-main>
     </el-container>
     <!-- add edit dialog -->
-    <AddAndEdit ref="userAddRef" @save="save" />
+    <AddAndEdit ref="adminAddRef" @save="save" />
     <!-- 分配角色弹框 -->
     <AssignRole ref="assignRoleRef" />
 </template>
@@ -47,14 +47,13 @@
 import { Search, Setting, Close, Plus, Delete, Edit } from '@element-plus/icons-vue'
 import useAdminTable from '@/composables/admin/useAdminTable'
 import useAdmin from '@/composables/admin/useAdmin'
-// import LeftTree from './LeftTree.vue'
 import { ref, onMounted, nextTick } from 'vue'
 import AddAndEdit from './AddAndEdit.vue'
 import AssignRole from './AssignRole.vue'
 
 const containerHeight = ref(0)
 const tableHeight = ref(0)
-const { listParam, tableData, treeClick, sizeChange, currentChange, getAdminList, searchBtn, resetBtn } = useAdminTable()
+const { listParam, tableData, sizeChange, currentChange, getAdminList, searchBtn, resetBtn } = useAdminTable()
 const { addBtn, editBtn, deleteBtn, assignBtn, adminAddRef, save, assignRoleRef } = useAdmin(getAdminList)
 
 onMounted(() => {
