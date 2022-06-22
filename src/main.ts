@@ -1,8 +1,8 @@
 import App from '@/App.vue'
 import store from '@/store/index'
 import router from '@/router/index'
-import { useAdminStore } from '@/store/adminStoreStore'
-import { useMenuStore } from '@/store/menuStoreStore'
+import { useAdminStore } from '@/store/adminStore'
+import { useMenuStore } from '@/store/menuStore'
 import { createApp, createVNode } from 'vue'
 import { getToken, cleanSession } from '@/utils/auth'
 //初始化样式

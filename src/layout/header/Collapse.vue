@@ -6,7 +6,7 @@
 <script setup lang='ts'>
 import { computed } from 'vue'
 import { Fold, Expand } from '@element-plus/icons-vue'
-import { useCollapseStore } from '@/store/collapse'
+import { useCollapseStore } from '@/store/collapseStore'
 
 const collapseStore = useCollapseStore()
 

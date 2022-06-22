@@ -9,8 +9,8 @@
 import MenuItem from './MenuItem.vue'
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { useCollapseStore } from '@/store/collapse'
-import { useMenuStore } from '@/store/menu'
+import { useCollapseStore } from '@/store/collapseStore'
+import { useMenuStore } from '@/store/menuStore'
 
 //控制菜单展开和关闭
 const collapseStore = useCollapseStore()

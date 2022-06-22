@@ -6,7 +6,7 @@
 <script setup lang='ts'>
 import { ref, computed, watch, onMounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { useTabStore } from '@/store/tab'
+import { useTabStore } from '@/store/tabStore'
 import { ITab } from '@/store/type'
 
 const route = useRoute()
