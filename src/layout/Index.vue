@@ -46,23 +46,29 @@ import Tab from './tab/Tab.vue'
 
     .main {
         padding-top: 0px;
-        .fade-enter-from{
+
+        .fade-enter-from {
             opacity: 0;
         }
-        .fade-enter-to{
+
+        .fade-enter-to {
             opacity: 1;
         }
-        .fade-leave-from{
+
+        .fade-leave-from {
             opacity: 1;
         }
-        .fade-leave-to{
+
+        .fade-leave-to {
             opacity: 0;
         }
-        .fade-enter-active{
+
+        .fade-enter-active {
             transition: all 0.3s;
             transition-delay: 0.3s;
         }
-        .fade-leave-active{
+
+        .fade-leave-active {
             transition: all 0.3s;
         }
     }
