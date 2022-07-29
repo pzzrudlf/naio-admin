@@ -1,5 +1,11 @@
 <template>
-    <el-drawer :model-value="visible" :title="title" :size="size" :close-on-click-modal="false" :destory-on-close="destoryOnClose">
+    <el-drawer 
+    v-model="visible" 
+    :title="title" 
+    :size="size" 
+    :close-on-click-modal="false" 
+    :destory-on-close="destoryOnClose"
+    @closed="closeRawDrawer">
         <div class="form-drawer">
             <div class="body">
                 <slot> </slot>
@@ -23,7 +29,7 @@ const props = defineProps({
     },
     destoryOnClose: {
         type: Boolean,
-        default: false
+        default: true
     },
     confirmText: {
         type: String,
@@ -35,12 +41,17 @@ const props = defineProps({
     },
 })
 
-const emit = defineEmits(['onClose', 'onConfirm'])
+const emit = defineEmits(['onClose', 'onConfirm', 'update:visible'])
 const onClose = () => {
     emit('onClose')
 }
 const onConfirm = () => {
     emit('onConfirm')
+    emit('update:visible', false)
+}
+
+const closeRawDrawer = () => {
+    emit('update:visible', false)
 }
 
 </script>

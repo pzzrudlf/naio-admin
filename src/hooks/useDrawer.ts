@@ -6,7 +6,7 @@ export default function useDrawer() {
     const drawer = reactive<DrawerModel>({
         title: '提交',
         size: '45%',
-        destoryOnClose: false,
+        destoryOnClose: true,
         confirmText: '确认',
         visible: false,
     })
