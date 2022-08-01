@@ -17,7 +17,8 @@
       "incremental": false,
       "allowSyntheticDefaultImports": true,
       // "allowJs": true,
-      // "types": ["element-plus/global"],
+      // Volar支持
+      "types": ["element-plus/global"],
       // 解决用字符串做下标报错
       "suppressImplicitAnyIndexErrors": true,
       // paths 路径解析起点
