@@ -5,7 +5,7 @@ import { DialogModel } from '@/utils/baseType'
 import { EditType, Title } from '@/utils/baseEnum'
 import { AddAndEditMenuModel, MenuModel, SelectNode } from '@/api/menu/menuModel'
 
-export default function useAddAndEditMenu(dialog: DialogModel, onShow, onClose, emit: any) {
+export default function useAddAndEditMenu(dialog: DialogModel, onShow: any, onClose: any, emit: any) {
     const { global } = useInstance()
     const addMenuForm = ref<InstanceType<typeof ElForm>>()
     const addMenuModel = reactive<AddAndEditMenuModel>({

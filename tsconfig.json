@@ -20,7 +20,7 @@
       // "types": ["element-plus/global"],
       // 解决用字符串做下标报错
       "suppressImplicitAnyIndexErrors": true,
-      // alias @
+      // paths 路径解析起点
       "baseUrl": "./",
       "paths": {
         "@/*":["./src/*"]
